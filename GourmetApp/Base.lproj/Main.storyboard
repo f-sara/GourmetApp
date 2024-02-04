@@ -31,8 +31,22 @@
                     <view key="view" contentMode="scaleToFill" id="zhX-8I-zHz">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="周囲のお店をキーワードで探す" translatesAutoresizingMaskIntoConstraints="NO" id="nmA-1A-6JH">
+                                <rect key="frame" x="5" y="74" width="383" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="2OJ-rx-GU8" id="xyR-cU-cPB"/>
+                                </connections>
+                            </searchBar>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="oEm-sk-bI3"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="nmA-1A-6JH" firstAttribute="top" secondItem="oEm-sk-bI3" secondAttribute="top" constant="15" id="FYR-Il-cgK"/>
+                            <constraint firstItem="nmA-1A-6JH" firstAttribute="centerX" secondItem="zhX-8I-zHz" secondAttribute="centerX" id="GwI-PX-ghn"/>
+                            <constraint firstItem="nmA-1A-6JH" firstAttribute="leading" secondItem="oEm-sk-bI3" secondAttribute="leading" constant="5" id="uSX-1F-Oa7"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="ホーム" image="house" catalog="system" id="F2n-M3-qap"/>
                 </viewController>
