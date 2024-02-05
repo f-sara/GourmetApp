@@ -9,6 +9,9 @@ import UIKit
 
 class RecommendCollectionViewCell: UICollectionViewCell {
 
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var genreLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         clipsToBounds = false

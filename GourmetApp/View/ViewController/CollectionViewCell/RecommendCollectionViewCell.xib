@@ -23,13 +23,13 @@
                     <stackView opaque="NO" contentMode="scaleAspectFit" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="CgN-ba-Zc6">
                         <rect key="frame" x="13" y="252" width="209" height="84"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XNU-1c-09P">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="nameLabel" text="nameLabel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XNU-1c-09P" userLabel="nameLabel">
                                 <rect key="frame" x="0.0" y="0.0" width="209" height="42"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dBt-mL-Gyw">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="genreLabel" text="genreLabel" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dBt-mL-Gyw" userLabel="genreLabel">
                                 <rect key="frame" x="0.0" y="42" width="209" height="42"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" systemColor="systemOrangeColor"/>
@@ -51,6 +51,10 @@
                 <constraint firstAttribute="trailing" secondItem="CgN-ba-Zc6" secondAttribute="trailing" constant="13" id="nQ7-t9-tkQ"/>
             </constraints>
             <size key="customSize" width="235" height="336"/>
+            <connections>
+                <outlet property="genreLabel" destination="dBt-mL-Gyw" id="EP1-j6-bmZ"/>
+                <outlet property="nameLabel" destination="XNU-1c-09P" id="4kN-OS-0bt"/>
+            </connections>
             <point key="canvasLocation" x="158.01526717557252" y="76.056338028169023"/>
         </collectionViewCell>
     </objects>
