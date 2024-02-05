@@ -2,6 +2,8 @@ xcuserdata/z
 *.xcscmblueprint
 *.xccheckout
 
+*.xcscheme
+
 build/
 DerivedData/
 *.moved-aside
