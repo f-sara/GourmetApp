@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8B8F02832B7074EC0066A4C5 /* RecommendCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8F02812B7074EC0066A4C5 /* RecommendCollectionViewCell.swift */; };
+		8B8F02842B7074EC0066A4C5 /* RecommendCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B8F02822B7074EC0066A4C5 /* RecommendCollectionViewCell.xib */; };
 		8BD7CF042B6DEAEB00E0687D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD7CF032B6DEAEB00E0687D /* AppDelegate.swift */; };
 		8BD7CF062B6DEAEB00E0687D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD7CF052B6DEAEB00E0687D /* SceneDelegate.swift */; };
 		8BD7CF082B6DEAEB00E0687D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD7CF072B6DEAEB00E0687D /* HomeViewController.swift */; };
@@ -36,6 +38,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8B8F02812B7074EC0066A4C5 /* RecommendCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendCollectionViewCell.swift; sourceTree = "<group>"; };
+		8B8F02822B7074EC0066A4C5 /* RecommendCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecommendCollectionViewCell.xib; sourceTree = "<group>"; };
 		8BD7CF002B6DEAEB00E0687D /* GourmetApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GourmetApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BD7CF032B6DEAEB00E0687D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8BD7CF052B6DEAEB00E0687D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -105,6 +109,8 @@
 		8B8F02802B7073ED0066A4C5 /* CollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
+				8B8F02812B7074EC0066A4C5 /* RecommendCollectionViewCell.swift */,
+				8B8F02822B7074EC0066A4C5 /* RecommendCollectionViewCell.xib */,
 			);
 			path = CollectionViewCell;
 			sourceTree = "<group>";
@@ -264,6 +270,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8BD7CF102B6DEAEC00E0687D /* LaunchScreen.storyboard in Resources */,
+				8B8F02842B7074EC0066A4C5 /* RecommendCollectionViewCell.xib in Resources */,
 				8BD7CF0D2B6DEAEC00E0687D /* Assets.xcassets in Resources */,
 				8BD7CF0B2B6DEAEB00E0687D /* Main.storyboard in Resources */,
 			);
@@ -293,6 +300,7 @@
 				8BD7CF082B6DEAEB00E0687D /* HomeViewController.swift in Sources */,
 				8BD7CF042B6DEAEB00E0687D /* AppDelegate.swift in Sources */,
 				8BD7CF062B6DEAEB00E0687D /* SceneDelegate.swift in Sources */,
+				8B8F02832B7074EC0066A4C5 /* RecommendCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
