@@ -33,7 +33,7 @@ final class HomeViewController: UIViewController {
         self.view.endEditing(true)
     }
 
-    func searchBarClose(_ searchBar: UISearchBar) {
+    private func searchBarClose(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
     }
 
