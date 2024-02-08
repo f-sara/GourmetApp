@@ -17,44 +17,50 @@
                 <rect key="frame" x="0.0" y="0.0" width="235" height="336"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ii6-gv-rEE">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ii6-gv-rEE">
                         <rect key="frame" x="0.0" y="0.0" width="235" height="218.33333333333334"/>
                     </imageView>
                     <stackView opaque="NO" contentMode="scaleAspectFit" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="CgN-ba-Zc6">
-                        <rect key="frame" x="5" y="218.33333333333334" width="217" height="112.66666666666666"/>
+                        <rect key="frame" x="5" y="218.33333333333334" width="225" height="112.66666666666666"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="nameLabel" text="nameLabel" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XNU-1c-09P" userLabel="nameLabel">
-                                <rect key="frame" x="0.0" y="0.0" width="217" height="56.333333333333336"/>
+                                <rect key="frame" x="0.0" y="0.0" width="225" height="56.333333333333336"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="genreLabel" text="genreLabel" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dBt-mL-Gyw" userLabel="genreLabel">
-                                <rect key="frame" x="0.0" y="56.333333333333343" width="217" height="56.333333333333343"/>
+                                <rect key="frame" x="0.0" y="56.333333333333343" width="225" height="56.333333333333343"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" systemColor="systemOrangeColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                     </stackView>
+                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="jf1-fb-XZD">
+                        <rect key="frame" x="99" y="149.66666666666666" width="37" height="37"/>
+                    </activityIndicatorView>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
                 <constraint firstItem="ii6-gv-rEE" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="70e-gi-X8q"/>
                 <constraint firstItem="CgN-ba-Zc6" firstAttribute="top" secondItem="ii6-gv-rEE" secondAttribute="bottom" id="DEo-jJ-jQs"/>
+                <constraint firstItem="jf1-fb-XZD" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="FYq-0v-DSL"/>
                 <constraint firstItem="ii6-gv-rEE" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="LIq-XR-QzX"/>
                 <constraint firstItem="ii6-gv-rEE" firstAttribute="height" secondItem="gTV-IL-0wX" secondAttribute="height" multiplier="0.65" id="O8q-9h-qf2"/>
                 <constraint firstItem="ii6-gv-rEE" firstAttribute="width" secondItem="gTV-IL-0wX" secondAttribute="width" id="VE2-Va-Jkk"/>
+                <constraint firstItem="jf1-fb-XZD" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="aWK-Cm-QgV"/>
                 <constraint firstItem="CgN-ba-Zc6" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="jWk-zu-c8a"/>
-                <constraint firstAttribute="trailing" secondItem="CgN-ba-Zc6" secondAttribute="trailing" constant="13" id="nQ7-t9-tkQ"/>
+                <constraint firstAttribute="trailing" secondItem="CgN-ba-Zc6" secondAttribute="trailing" constant="5" id="nQ7-t9-tkQ"/>
                 <constraint firstAttribute="bottom" secondItem="CgN-ba-Zc6" secondAttribute="bottom" constant="5" id="ruy-5Y-aNI"/>
             </constraints>
             <size key="customSize" width="235" height="336"/>
             <connections>
                 <outlet property="genreLabel" destination="dBt-mL-Gyw" id="EP1-j6-bmZ"/>
+                <outlet property="indicatorView" destination="jf1-fb-XZD" id="MjJ-Zj-PLT"/>
                 <outlet property="nameLabel" destination="XNU-1c-09P" id="4kN-OS-0bt"/>
-                <outlet property="shopImage" destination="ii6-gv-rEE" id="lLj-yR-mMd"/>
+                <outlet property="shopImage" destination="ii6-gv-rEE" id="Ds3-k8-ott"/>
             </connections>
             <point key="canvasLocation" x="158.01526717557252" y="76.056338028169023"/>
         </collectionViewCell>
