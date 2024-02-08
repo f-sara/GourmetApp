@@ -8,10 +8,10 @@
 import UIKit
 import CoreLocation
 
-final class HomeViewController: UIViewController, CLLocationManagerDelegate {
-    let locationManager = CLLocationManager()
-    var latitude: Double = 0.0
-    var longitude: Double = 0.0
+final class HomeViewController: UIViewController {
+    private let locationManager = CLLocationManager()
+    private var latitude: Double = 0.0
+    private var longitude: Double = 0.0
 
     private var presenter: HomePresenter!
     private var restaurantData: RestaurantDataModel?
@@ -26,6 +26,51 @@ final class HomeViewController: UIViewController, CLLocationManagerDelegate {
         locationManager.requestWhenInUseAuthorization()
     }
 
+    private func buildImage(urlString: String?, completion: @escaping (UIImage?) -> Void) {
+        guard let urlString = urlString else {
+            completion(nil)
+            return
+        }
+
+        DispatchQueue.global().async {
+            if let url = URL(string: urlString) {
+                do {
+                    let data = try Data(contentsOf: url)
+                    let image = UIImage(data: data)
+                    DispatchQueue.main.async {
+                        completion(image)
+                    }
+                } catch {
+                    print(error)
+                    DispatchQueue.main.async {
+                        completion(nil)
+                    }
+                }
+            } else {
+                DispatchQueue.main.async {
+                    completion(nil)
+                }
+            }
+        }
+    }
+
+
+}
+
+extension HomeViewController: HomePresenterOutput {
+    func updateUI(_ restaurantModel: RestaurantDataModel?) {
+        self.restaurantData = restaurantModel
+        Task {
+            self.collectionView.reloadData()
+        }
+    }
+
+    func showError(error: Error) {
+        print(error)
+    }
+}
+
+extension HomeViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.last {
             latitude = location.coordinate.latitude
@@ -46,20 +91,6 @@ final class HomeViewController: UIViewController, CLLocationManagerDelegate {
             print("位置情報サービスの利用が許可されていません。")
         }
     }
-
-}
-
-extension HomeViewController: HomePresenterOutput {
-    func updateUI(_ restaurantModel: RestaurantDataModel?) {
-        self.restaurantData = restaurantModel
-        Task {
-            self.collectionView.reloadData()
-        }
-    }
-
-    func showError(error: Error) {
-        print(error)
-    }
 }
 
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -68,7 +99,11 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        if let shopCount = self.restaurantData?.results.shop.count {
+            return shopCount
+        } else {
+            return 0
+        }
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -98,7 +133,6 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
 }
 
-// スタイルの変更
 extension HomeViewController: UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
@@ -120,35 +154,4 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
         let heightSize = widthSize * 1.3
         return CGSize(width: widthSize, height: heightSize)
     }
-}
-
-extension HomeViewController {
-    private func buildImage(urlString: String?, completion: @escaping (UIImage?) -> Void) {
-        guard let urlString = urlString else {
-            completion(nil)
-            return
-        }
-
-        DispatchQueue.global().async {
-            if let url = URL(string: urlString) {
-                do {
-                    let data = try Data(contentsOf: url)
-                    let image = UIImage(data: data)
-                    DispatchQueue.main.async {
-                        completion(image)
-                    }
-                } catch {
-                    print(error)
-                    DispatchQueue.main.async {
-                        completion(nil)
-                    }
-                }
-            } else {
-                DispatchQueue.main.async {
-                    completion(nil)
-                }
-            }
-        }
-    }
-
 }
