@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8B53D0722B70FAD000E84948 /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B53D0712B70FAD000E84948 /* HomePresenter.swift */; };
+		8B53D0742B746E4F00E84948 /* ErrorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B53D0732B746E4F00E84948 /* ErrorModel.swift */; };
 		8B8F02832B7074EC0066A4C5 /* RecommendCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8F02812B7074EC0066A4C5 /* RecommendCollectionViewCell.swift */; };
 		8B8F02842B7074EC0066A4C5 /* RecommendCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B8F02822B7074EC0066A4C5 /* RecommendCollectionViewCell.xib */; };
 		8B8F02872B7096D70066A4C5 /* HomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8F02862B7096D70066A4C5 /* HomeModel.swift */; };
@@ -42,6 +43,7 @@
 
 /* Begin PBXFileReference section */
 		8B53D0712B70FAD000E84948 /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
+		8B53D0732B746E4F00E84948 /* ErrorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorModel.swift; sourceTree = "<group>"; };
 		8B8F02812B7074EC0066A4C5 /* RecommendCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendCollectionViewCell.swift; sourceTree = "<group>"; };
 		8B8F02822B7074EC0066A4C5 /* RecommendCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecommendCollectionViewCell.xib; sourceTree = "<group>"; };
 		8B8F02862B7096D70066A4C5 /* HomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModel.swift; sourceTree = "<group>"; };
@@ -134,6 +136,7 @@
 			children = (
 				8B8F02862B7096D70066A4C5 /* HomeModel.swift */,
 				8B8F02882B70C3C50066A4C5 /* RestaurantDataModel.swift */,
+				8B53D0732B746E4F00E84948 /* ErrorModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -332,6 +335,7 @@
 				8BD7CF062B6DEAEB00E0687D /* SceneDelegate.swift in Sources */,
 				8B8F02872B7096D70066A4C5 /* HomeModel.swift in Sources */,
 				8B8F02892B70C3C50066A4C5 /* RestaurantDataModel.swift in Sources */,
+				8B53D0742B746E4F00E84948 /* ErrorModel.swift in Sources */,
 				8B8F02832B7074EC0066A4C5 /* RecommendCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

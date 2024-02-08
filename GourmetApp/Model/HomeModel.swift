@@ -76,13 +76,6 @@ final class HomeModel {
     
 }
 
-enum APIError: Error {
-    case failCreateURL
-    case sessionError
-    case requestError(Error)
-    case decodeError
-}
-
 extension Notification.Name {
     static let processDidFinish = Notification.Name("processDidFinish")
 }
