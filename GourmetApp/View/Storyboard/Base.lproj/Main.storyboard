@@ -88,6 +88,7 @@
                     <connections>
                         <outlet property="collectionView" destination="pyH-KV-9bS" id="OTL-8b-wVn"/>
                         <outlet property="indicatorView" destination="6cn-y5-a0g" id="FpA-ua-HYu"/>
+                        <outlet property="searchBar" destination="nmA-1A-6JH" id="hBn-jF-fia"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nmr-pQ-YaS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

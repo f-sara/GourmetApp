@@ -16,6 +16,7 @@ final class HomeViewController: UIViewController {
     private var presenter: HomePresenter!
     private var restaurantData: RestaurantDataModel?
 
+    @IBOutlet @ViewLoading var searchBar: UISearchBar
     @IBOutlet @ViewLoading var indicatorView: UIActivityIndicatorView
     @IBOutlet @ViewLoading var collectionView: UICollectionView
 
@@ -24,7 +25,16 @@ final class HomeViewController: UIViewController {
         collectionView.register(UINib(nibName: "RecommendCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "RecommendCell")
         presenter = HomePresenter(output: self, model: HomeModel())
         locationManager.delegate = self
+        collectionView.keyboardDismissMode = .onDrag
         locationManager.requestWhenInUseAuthorization()
+    }
+
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+
+    func searchBarClose(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
     }
 
     private func buildImage(urlString: String?, completion: @escaping (UIImage?) -> Void) {
