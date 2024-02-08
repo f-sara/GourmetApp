@@ -11,6 +11,7 @@ class RecommendCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var genreLabel: UILabel!
+    @IBOutlet weak var shopImage: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
