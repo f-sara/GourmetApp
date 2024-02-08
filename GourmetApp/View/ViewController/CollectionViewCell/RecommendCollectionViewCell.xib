@@ -37,20 +37,15 @@
                             </label>
                         </subviews>
                     </stackView>
-                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="jf1-fb-XZD">
-                        <rect key="frame" x="99" y="149.66666666666666" width="37" height="37"/>
-                    </activityIndicatorView>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
                 <constraint firstItem="ii6-gv-rEE" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="70e-gi-X8q"/>
                 <constraint firstItem="CgN-ba-Zc6" firstAttribute="top" secondItem="ii6-gv-rEE" secondAttribute="bottom" id="DEo-jJ-jQs"/>
-                <constraint firstItem="jf1-fb-XZD" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="FYq-0v-DSL"/>
                 <constraint firstItem="ii6-gv-rEE" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="LIq-XR-QzX"/>
                 <constraint firstItem="ii6-gv-rEE" firstAttribute="height" secondItem="gTV-IL-0wX" secondAttribute="height" multiplier="0.65" id="O8q-9h-qf2"/>
                 <constraint firstItem="ii6-gv-rEE" firstAttribute="width" secondItem="gTV-IL-0wX" secondAttribute="width" id="VE2-Va-Jkk"/>
-                <constraint firstItem="jf1-fb-XZD" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="aWK-Cm-QgV"/>
                 <constraint firstItem="CgN-ba-Zc6" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="jWk-zu-c8a"/>
                 <constraint firstAttribute="trailing" secondItem="CgN-ba-Zc6" secondAttribute="trailing" constant="5" id="nQ7-t9-tkQ"/>
                 <constraint firstAttribute="bottom" secondItem="CgN-ba-Zc6" secondAttribute="bottom" constant="5" id="ruy-5Y-aNI"/>
@@ -58,7 +53,6 @@
             <size key="customSize" width="235" height="336"/>
             <connections>
                 <outlet property="genreLabel" destination="dBt-mL-Gyw" id="EP1-j6-bmZ"/>
-                <outlet property="indicatorView" destination="jf1-fb-XZD" id="MjJ-Zj-PLT"/>
                 <outlet property="nameLabel" destination="XNU-1c-09P" id="4kN-OS-0bt"/>
                 <outlet property="shopImage" destination="ii6-gv-rEE" id="Ds3-k8-ott"/>
             </connections>

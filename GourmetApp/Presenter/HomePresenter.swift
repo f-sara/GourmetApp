@@ -30,12 +30,10 @@ extension HomePresenter: HomePresenterInput {
     func fetchRestaurantData(latitude: Double, longitude: Double, keyword: String?) {
         model.fetchRestaurantData(latitude: latitude, longitude: longitude, keyword: keyword) { [weak self]  result in
             guard let self = self else {
-                print("参照エラー")
                 return
             }
             switch result {
             case .success(let restaurantData):
-                print(restaurantData)
                 self.output?.updateUI(restaurantData)
             case .failure(let error):
                 self.output?.showError(error: error)

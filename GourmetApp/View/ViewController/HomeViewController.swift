@@ -16,6 +16,7 @@ final class HomeViewController: UIViewController {
     private var presenter: HomePresenter!
     private var restaurantData: RestaurantDataModel?
 
+    @IBOutlet @ViewLoading var indicatorView: UIActivityIndicatorView
     @IBOutlet @ViewLoading var collectionView: UICollectionView
 
     override func viewDidLoad() {
@@ -122,7 +123,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
                     print("画像表示エラー")
                 }
             }
-            cell.indicatorView.stopAnimating()
+            indicatorView.stopAnimating()
             return cell
 
         } else {

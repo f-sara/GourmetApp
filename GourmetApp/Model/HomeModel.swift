@@ -16,7 +16,6 @@ final class HomeModel {
             completion(.failure(APIError.failCreateURL))
             return
         }
-        print(url)
 
         Task.detached {
             let urlSessionTask = URLSession.shared.dataTask(with: url) { (data, _, error) in
@@ -42,7 +41,7 @@ final class HomeModel {
         }
     }
 
-    func createAPIURL(latitude: Double, longitude: Double, keyword: String?) -> URL? {
+    private func createAPIURL(latitude: Double, longitude: Double, keyword: String?) -> URL? {
         let baseURL: URL? = URL(string: "https://webservice.recruit.co.jp/hotpepper/gourmet/v1")
         let apiKey = ProcessInfo.processInfo.environment["apiKey"]
         let format = "json"
@@ -68,14 +67,9 @@ final class HomeModel {
         return urlComponents?.url
     }
 
-    func decodeAPIResponse(responseData: Data) throws -> RestaurantDataModel {
+    private func decodeAPIResponse(responseData: Data) throws -> RestaurantDataModel {
         let decoder = JSONDecoder()
         let restaurantData = try decoder.decode(RestaurantDataModel.self, from: responseData)
         return restaurantData
     }
-    
-}
-
-extension Notification.Name {
-    static let processDidFinish = Notification.Name("processDidFinish")
 }
