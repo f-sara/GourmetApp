@@ -12,7 +12,7 @@ struct RestaurantDataModel: Codable {
 }
 
 struct Results: Codable {
-    let shop: Shop
+    let shop: [Shop]
 }
 
 struct Shop: Codable {
