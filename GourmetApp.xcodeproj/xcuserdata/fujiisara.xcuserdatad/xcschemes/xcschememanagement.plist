@@ -4,10 +4,28 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>GourmetApp.xcscheme_^#shared#^_</key>
+		<key>GourmetApp.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>8BD7CEFF2B6DEAEB00E0687D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>8BD7CF152B6DEAEC00E0687D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>8BD7CF1F2B6DEAEC00E0687D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>

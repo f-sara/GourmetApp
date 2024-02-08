@@ -7,9 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8B53D0722B70FAD000E84948 /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B53D0712B70FAD000E84948 /* HomePresenter.swift */; };
+		8B53D0742B746E4F00E84948 /* ErrorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B53D0732B746E4F00E84948 /* ErrorModel.swift */; };
+		8B8F02832B7074EC0066A4C5 /* RecommendCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8F02812B7074EC0066A4C5 /* RecommendCollectionViewCell.swift */; };
+		8B8F02842B7074EC0066A4C5 /* RecommendCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B8F02822B7074EC0066A4C5 /* RecommendCollectionViewCell.xib */; };
+		8B8F02872B7096D70066A4C5 /* HomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8F02862B7096D70066A4C5 /* HomeModel.swift */; };
+		8B8F02892B70C3C50066A4C5 /* RestaurantDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8F02882B70C3C50066A4C5 /* RestaurantDataModel.swift */; };
 		8BD7CF042B6DEAEB00E0687D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD7CF032B6DEAEB00E0687D /* AppDelegate.swift */; };
 		8BD7CF062B6DEAEB00E0687D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD7CF052B6DEAEB00E0687D /* SceneDelegate.swift */; };
-		8BD7CF082B6DEAEB00E0687D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD7CF072B6DEAEB00E0687D /* ViewController.swift */; };
+		8BD7CF082B6DEAEB00E0687D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD7CF072B6DEAEB00E0687D /* HomeViewController.swift */; };
 		8BD7CF0B2B6DEAEB00E0687D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BD7CF092B6DEAEB00E0687D /* Main.storyboard */; };
 		8BD7CF0D2B6DEAEC00E0687D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8BD7CF0C2B6DEAEC00E0687D /* Assets.xcassets */; };
 		8BD7CF102B6DEAEC00E0687D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BD7CF0E2B6DEAEC00E0687D /* LaunchScreen.storyboard */; };
@@ -36,10 +42,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8B53D0712B70FAD000E84948 /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
+		8B53D0732B746E4F00E84948 /* ErrorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorModel.swift; sourceTree = "<group>"; };
+		8B8F02812B7074EC0066A4C5 /* RecommendCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendCollectionViewCell.swift; sourceTree = "<group>"; };
+		8B8F02822B7074EC0066A4C5 /* RecommendCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecommendCollectionViewCell.xib; sourceTree = "<group>"; };
+		8B8F02862B7096D70066A4C5 /* HomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModel.swift; sourceTree = "<group>"; };
+		8B8F02882B70C3C50066A4C5 /* RestaurantDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantDataModel.swift; sourceTree = "<group>"; };
 		8BD7CF002B6DEAEB00E0687D /* GourmetApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GourmetApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BD7CF032B6DEAEB00E0687D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8BD7CF052B6DEAEB00E0687D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		8BD7CF072B6DEAEB00E0687D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		8BD7CF072B6DEAEB00E0687D /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		8BD7CF0A2B6DEAEB00E0687D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8BD7CF0C2B6DEAEC00E0687D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8BD7CF0F2B6DEAEC00E0687D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -76,6 +88,59 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8B53D0702B70FA5700E84948 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				8B53D0712B70FAD000E84948 /* HomePresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		8B8F02782B7064290066A4C5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				8B8F027A2B7064500066A4C5 /* ViewController */,
+				8B8F02792B7064360066A4C5 /* Storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		8B8F02792B7064360066A4C5 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				8BD7CF092B6DEAEB00E0687D /* Main.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		8B8F027A2B7064500066A4C5 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				8BD7CF072B6DEAEB00E0687D /* HomeViewController.swift */,
+				8B8F02802B7073ED0066A4C5 /* CollectionViewCell */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		8B8F02802B7073ED0066A4C5 /* CollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				8B8F02812B7074EC0066A4C5 /* RecommendCollectionViewCell.swift */,
+				8B8F02822B7074EC0066A4C5 /* RecommendCollectionViewCell.xib */,
+			);
+			path = CollectionViewCell;
+			sourceTree = "<group>";
+		};
+		8B8F02852B7089FB0066A4C5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8B8F02862B7096D70066A4C5 /* HomeModel.swift */,
+				8B8F02882B70C3C50066A4C5 /* RestaurantDataModel.swift */,
+				8B53D0732B746E4F00E84948 /* ErrorModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		8BD7CEF72B6DEAEB00E0687D = {
 			isa = PBXGroup;
 			children = (
@@ -101,8 +166,9 @@
 			children = (
 				8BD7CF032B6DEAEB00E0687D /* AppDelegate.swift */,
 				8BD7CF052B6DEAEB00E0687D /* SceneDelegate.swift */,
-				8BD7CF072B6DEAEB00E0687D /* ViewController.swift */,
-				8BD7CF092B6DEAEB00E0687D /* Main.storyboard */,
+				8B53D0702B70FA5700E84948 /* Presenter */,
+				8B8F02782B7064290066A4C5 /* View */,
+				8B8F02852B7089FB0066A4C5 /* Model */,
 				8BD7CF0C2B6DEAEC00E0687D /* Assets.xcassets */,
 				8BD7CF0E2B6DEAEC00E0687D /* LaunchScreen.storyboard */,
 				8BD7CF112B6DEAEC00E0687D /* Info.plist */,
@@ -143,6 +209,8 @@
 			dependencies = (
 			);
 			name = GourmetApp;
+			packageProductDependencies = (
+			);
 			productName = GourmetApp;
 			productReference = 8BD7CF002B6DEAEB00E0687D /* GourmetApp.app */;
 			productType = "com.apple.product-type.application";
@@ -215,6 +283,8 @@
 				Base,
 			);
 			mainGroup = 8BD7CEF72B6DEAEB00E0687D;
+			packageReferences = (
+			);
 			productRefGroup = 8BD7CF012B6DEAEB00E0687D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -232,6 +302,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8BD7CF102B6DEAEC00E0687D /* LaunchScreen.storyboard in Resources */,
+				8B8F02842B7074EC0066A4C5 /* RecommendCollectionViewCell.xib in Resources */,
 				8BD7CF0D2B6DEAEC00E0687D /* Assets.xcassets in Resources */,
 				8BD7CF0B2B6DEAEB00E0687D /* Main.storyboard in Resources */,
 			);
@@ -258,9 +329,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8BD7CF082B6DEAEB00E0687D /* ViewController.swift in Sources */,
+				8B53D0722B70FAD000E84948 /* HomePresenter.swift in Sources */,
+				8BD7CF082B6DEAEB00E0687D /* HomeViewController.swift in Sources */,
 				8BD7CF042B6DEAEB00E0687D /* AppDelegate.swift in Sources */,
 				8BD7CF062B6DEAEB00E0687D /* SceneDelegate.swift in Sources */,
+				8B8F02872B7096D70066A4C5 /* HomeModel.swift in Sources */,
+				8B8F02892B70C3C50066A4C5 /* RestaurantDataModel.swift in Sources */,
+				8B53D0742B746E4F00E84948 /* ErrorModel.swift in Sources */,
+				8B8F02832B7074EC0066A4C5 /* RecommendCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -442,10 +518,12 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = RGJJ9A3WD8;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GourmetApp/Info.plist;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "周囲の店舗情報を取得するために位置情報を使用します";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UILaunchStoryboardName = "";
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -454,7 +532,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.sa.fujii.68.GourmetApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sa.fujii.68.GourmetApp2024;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -469,10 +547,12 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = RGJJ9A3WD8;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GourmetApp/Info.plist;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "周囲の店舗情報を取得するために位置情報を使用します";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UILaunchStoryboardName = "";
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -481,7 +561,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.sa.fujii.68.GourmetApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sa.fujii.68.GourmetApp2025;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
