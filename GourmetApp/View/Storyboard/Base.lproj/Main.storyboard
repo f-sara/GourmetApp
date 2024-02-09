@@ -70,7 +70,6 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="oEm-sk-bI3"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <color key="tintColor" systemColor="systemOrangeColor"/>
                         <constraints>
                             <constraint firstItem="oEm-sk-bI3" firstAttribute="trailing" secondItem="uI0-OR-7LP" secondAttribute="trailing" constant="5" id="1pl-JK-prh"/>
                             <constraint firstItem="uI0-OR-7LP" firstAttribute="leading" secondItem="oEm-sk-bI3" secondAttribute="leading" constant="15" id="8eU-57-qI9"/>
@@ -91,26 +90,22 @@
                         <outlet property="collectionView" destination="pyH-KV-9bS" id="OTL-8b-wVn"/>
                         <outlet property="indicatorView" destination="6cn-y5-a0g" id="FpA-ua-HYu"/>
                         <outlet property="searchBar" destination="nmA-1A-6JH" id="hBn-jF-fia"/>
+                        <segue destination="T9v-QZ-Vul" kind="presentation" identifier="showDetail" id="768-yA-zDY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nmr-pQ-YaS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-446.56488549618319" y="-762.67605633802816"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="y4E-wf-55G">
+        <!--RestaurantDetail-->
+        <scene sceneID="dtA-GX-k4j">
             <objects>
-                <viewController id="kAe-cm-e9I" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="KoD-87-tNj">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="RH0-q1-paQ"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="yEX-yL-xy0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardIdentifier="RestaurantDetail" storyboardName="RestaurantDetail" id="T9v-QZ-Vul" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="jS5-5Y-IMt"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EfM-q3-fIl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="526" y="-763"/>
+            <point key="canvasLocation" x="337" y="-763"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="F3o-ug-tsH">

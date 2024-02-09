@@ -64,8 +64,6 @@ final class HomeViewController: UIViewController {
             }
         }
     }
-
-
 }
 
 extension HomeViewController: HomePresenterOutput {
@@ -142,10 +140,21 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             return cell
         }
     }
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let selectedCellIndex = indexPath.item
+        performSegue(withIdentifier: "showDetail", sender: nil)
+        showDetailView(index: selectedCellIndex)
+    }
+
+    func showDetailView(index: Int) {
+        let storyboard = UIStoryboard(name: "RestaurantDetail", bundle: nil)
+        let restaurantDetailView = storyboard.instantiateViewController(withIdentifier: "RestaurantDetail") as! RestaurantDetailViewController
+        restaurantDetailView.restaurantInfo = self.restaurantData?.results.shop[index]
+    }
 }
 
 extension HomeViewController: UICollectionViewDelegateFlowLayout {
-
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 10 , left: 2 , bottom: 10 , right: 2 )
     }
