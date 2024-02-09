@@ -59,6 +59,7 @@
                                 <activityIndicatorView key="backgroundView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="medium" id="6cn-y5-a0g">
                                     <rect key="frame" x="0.0" y="0.0" width="363" height="598.66666666666674"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="color" systemColor="systemOrangeColor"/>
                                 </activityIndicatorView>
                                 <cells/>
                                 <connections>
@@ -69,6 +70,7 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="oEm-sk-bI3"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="tintColor" systemColor="systemOrangeColor"/>
                         <constraints>
                             <constraint firstItem="oEm-sk-bI3" firstAttribute="trailing" secondItem="uI0-OR-7LP" secondAttribute="trailing" constant="5" id="1pl-JK-prh"/>
                             <constraint firstItem="uI0-OR-7LP" firstAttribute="leading" secondItem="oEm-sk-bI3" secondAttribute="leading" constant="15" id="8eU-57-qI9"/>
@@ -94,6 +96,21 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nmr-pQ-YaS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-446.56488549618319" y="-762.67605633802816"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="y4E-wf-55G">
+            <objects>
+                <viewController id="kAe-cm-e9I" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="KoD-87-tNj">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="RH0-q1-paQ"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yEX-yL-xy0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="526" y="-763"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="F3o-ug-tsH">
