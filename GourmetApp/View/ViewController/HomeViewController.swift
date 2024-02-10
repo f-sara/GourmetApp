@@ -25,6 +25,7 @@ final class HomeViewController: UIViewController {
         collectionView.register(UINib(nibName: "RecommendCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "RecommendCell")
         presenter = HomePresenter(output: self, model: HomeModel())
         locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyKilometer
         collectionView.keyboardDismissMode = .onDrag
         locationManager.requestWhenInUseAuthorization()
     }
