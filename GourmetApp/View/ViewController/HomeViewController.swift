@@ -34,6 +34,13 @@ final class HomeViewController: UIViewController {
         self.view.endEditing(true)
     }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showDetail" {
+            let restaurantDetailViewController = segue.destination as! RestaurantDetailViewController
+            restaurantDetailViewController.restaurantInfo = sender as? Shop
+        }
+    }
+
     private func searchBarClose(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
     }
@@ -143,16 +150,9 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let selectedCellIndex = indexPath.item
-        performSegue(withIdentifier: "showDetail", sender: nil)
-        showDetailView(index: selectedCellIndex)
+        self.performSegue(withIdentifier: "showDetail", sender: self.restaurantData?.results.shop[indexPath.item])
     }
 
-    func showDetailView(index: Int) {
-        let storyboard = UIStoryboard(name: "RestaurantDetail", bundle: nil)
-        let restaurantDetailView = storyboard.instantiateViewController(withIdentifier: "RestaurantDetail") as! RestaurantDetailViewController
-        restaurantDetailView.restaurantInfo = self.restaurantData?.results.shop[index]
-    }
 }
 
 extension HomeViewController: UICollectionViewDelegateFlowLayout {
