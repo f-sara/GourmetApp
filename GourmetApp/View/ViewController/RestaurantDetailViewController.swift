@@ -10,14 +10,14 @@ import UIKit
 
 final class RestaurantDetailViewController: UIViewController {
 
-    var restaurantInfo: Shop?
+    var restaurantDetail: Shop?
 
-    @IBOutlet weak var shopName: UILabel!
-    @IBOutlet weak var shopImage: UIImageView!
+    @IBOutlet @ViewLoading var shopName: UILabel
+    @IBOutlet @ViewLoading var shopImage: UIImageView
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let name = restaurantInfo?.name {
+        if let name = restaurantDetail?.name {
             shopName.text = name
         } else {
             shopName.text = "なし"

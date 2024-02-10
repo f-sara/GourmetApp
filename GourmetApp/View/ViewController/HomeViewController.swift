@@ -15,6 +15,7 @@ final class HomeViewController: UIViewController {
 
     private var presenter: HomePresenter!
     private var restaurantData: RestaurantDataModel?
+    private var restaurantImage: [UIImage?] = []
 
     @IBOutlet @ViewLoading var searchBar: UISearchBar
     @IBOutlet @ViewLoading var indicatorView: UIActivityIndicatorView
@@ -37,7 +38,7 @@ final class HomeViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetail" {
             let restaurantDetailViewController = segue.destination as! RestaurantDetailViewController
-            restaurantDetailViewController.restaurantInfo = sender as? Shop
+            restaurantDetailViewController.restaurantDetail = sender as? Shop
         }
     }
 
@@ -56,6 +57,7 @@ final class HomeViewController: UIViewController {
                 do {
                     let data = try Data(contentsOf: url)
                     let image = UIImage(data: data)
+                    self.restaurantImage.append(image)
                     DispatchQueue.main.async {
                         completion(image)
                     }
@@ -132,6 +134,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             cell.genreLabel.text = genre
             buildImage(urlString: imageURL) { image in
                 if let image = image {
+                    self.restaurantImage.append(image)
                     DispatchQueue.main.async {
                         cell.shopImage.image = image
                     }
