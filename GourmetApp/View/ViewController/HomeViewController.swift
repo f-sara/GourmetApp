@@ -57,7 +57,6 @@ final class HomeViewController: UIViewController {
                 do {
                     let data = try Data(contentsOf: url)
                     let image = UIImage(data: data)
-                    self.restaurantImage.append(image)
                     DispatchQueue.main.async {
                         completion(image)
                     }
@@ -127,14 +126,11 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RecommendCell", for: indexPath) as! RecommendCollectionViewCell
-        if let name = self.restaurantData?.results.shop[indexPath.item].name,
-           let genre = self.restaurantData?.results.shop[indexPath.item].genre.name,
-           let imageURL = self.restaurantData?.results.shop[indexPath.item].photo.mobile.l{
-            cell.nameLabel.text = name
-            cell.genreLabel.text = genre
-            buildImage(urlString: imageURL) { image in
-                if let image = image {
-                    self.restaurantImage.append(image)
+        if let restaurantData = self.restaurantData?.results.shop[indexPath.item] {
+            cell.nameLabel.text = restaurantData.name
+            cell.genreLabel.text = restaurantData.genre.name
+            buildImage(urlString: restaurantData.photo.mobile.l) { image in
+                if let image {
                     DispatchQueue.main.async {
                         cell.shopImage.image = image
                     }
