@@ -5,29 +5,43 @@
 //  Created by 藤井紗良 on 2024/02/05.
 //
 
-struct RestaurantDataModel: Codable {
+struct RestaurantDataModel: Decodable {
     let results: Results
 }
 
-struct Results: Codable {
+struct Results: Decodable {
     let shop: [Shop]
 }
 
-struct Shop: Codable {
-    let name: String // 店の名前
+struct Shop: Decodable {
+    let name: String
     let genre: Genre
     let photo: Photo
+    let address: String
+    let open: String
+    let close: String
+    let shopCatch: String
+
+    enum CodingKeys: String, CodingKey {
+        case name
+        case genre
+        case photo
+        case address
+        case open
+        case close
+        case shopCatch = "catch"
+    }
 }
 
-struct Genre: Codable {
-    let name: String // ジャンル
+struct Genre: Decodable {
+    let name: String
 }
 
-struct Photo: Codable {
+struct Photo: Decodable {
     let mobile: Mobile
 }
 
-
-struct Mobile: Codable {
-    let l: String // 携帯用のトップ写真
+struct Mobile: Decodable {
+    let l: String
 }
+
