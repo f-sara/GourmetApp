@@ -10,7 +10,6 @@ import UIKit
 
 final class RestaurantDetailViewController: UIViewController {
 
-    //    var restaurantDetail: Shop?
     var restaurantDetail: (Shop?, UIImage?)
 
     @IBOutlet @ViewLoading var shopNameLabel: UILabel
@@ -30,7 +29,6 @@ final class RestaurantDetailViewController: UIViewController {
             catchLabel.text = restaurantDetailInfo.genre.genreCatch
             subCatchLabel.text = restaurantDetailInfo.shopCatch
             genreLabel.text = restaurantDetailInfo.genre.name
-//            openLabel.text = "定休日：\(restaurantDetailInfo.close)"
             openLabel.text = restaurantDetailInfo.open
             shopImage.image = restaurantDetailImage
         }

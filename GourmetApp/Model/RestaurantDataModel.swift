@@ -40,7 +40,7 @@ struct Shop: Decodable {
 struct Genre: Decodable {
     let name: String
     let genreCatch: String
-
+    
     enum CodingKeys: String, CodingKey {
         case name
         case genreCatch = "catch"
