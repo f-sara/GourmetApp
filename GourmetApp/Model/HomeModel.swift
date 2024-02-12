@@ -45,28 +45,23 @@ final class HomeModel {
         let baseURL: URL? = URL(string: "https://webservice.recruit.co.jp/hotpepper/gourmet/v1")
         let apiKey = ProcessInfo.processInfo.environment["apiKey"]
         let format = "json"
-
         var urlComponents = URLComponents(url: baseURL!, resolvingAgainstBaseURL: true)
 
+        var queryItems = [
+            URLQueryItem(name: "key", value: apiKey),
+            URLQueryItem(name: "lat", value: latitude.description),
+            URLQueryItem(name: "lng", value: longitude.description),
+            URLQueryItem(name: "format", value: format),
+            URLQueryItem(name: "count", value: "20"),
+            URLQueryItem(name: "range", value: "5")
+        ]
+
         if let keyword {
-            urlComponents?.queryItems = [
-                URLQueryItem(name: "key", value: apiKey),
-                URLQueryItem(name: "lat", value: latitude.description),
-                URLQueryItem(name: "lng", value: longitude.description),
-                URLQueryItem(name: "keyword", value: keyword),
-                URLQueryItem(name: "format", value: format),
-                URLQueryItem(name: "count", value: "20")
-            ]
-        } else {
-            urlComponents?.queryItems = [
-                URLQueryItem(name: "key", value: apiKey),
-                URLQueryItem(name: "lat", value: latitude.description),
-                URLQueryItem(name: "lng", value: longitude.description),
-                URLQueryItem(name: "format", value: format),
-                URLQueryItem(name: "range", value: "5"),
-                URLQueryItem(name: "count", value: "20")
-            ]
+            queryItems.append(URLQueryItem(name: "keyword", value: keyword))
         }
+
+        urlComponents?.queryItems = queryItems
+
         return urlComponents?.url
     }
 
