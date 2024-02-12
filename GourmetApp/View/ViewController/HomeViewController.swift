@@ -15,6 +15,7 @@ final class HomeViewController: UIViewController {
 
     private var presenter: HomePresenter!
     private var restaurantData: RestaurantDataModel?
+    private var restaurantImage: [UIImage] = []
 
     @IBOutlet @ViewLoading var searchBar: UISearchBar
     @IBOutlet @ViewLoading var indicatorView: UIActivityIndicatorView
@@ -25,6 +26,7 @@ final class HomeViewController: UIViewController {
         collectionView.register(UINib(nibName: "RecommendCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "RecommendCell")
         presenter = HomePresenter(output: self, model: HomeModel())
         locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyKilometer
         collectionView.keyboardDismissMode = .onDrag
         locationManager.requestWhenInUseAuthorization()
     }
@@ -33,39 +35,40 @@ final class HomeViewController: UIViewController {
         self.view.endEditing(true)
     }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showDetail" {
+            let restaurantDetailViewController = segue.destination as! RestaurantDetailViewController
+            //            restaurantDetailViewController.restaurantDetail = sender as? Shop
+            restaurantDetailViewController.restaurantDetail = sender as! (Shop, UIImage)
+        }
+    }
+
     private func searchBarClose(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
     }
 
-    private func buildImage(urlString: String?, completion: @escaping (UIImage?) -> Void) {
-        guard let urlString = urlString else {
-            completion(nil)
+    private func showImage(imageView: UIImageView, imageUrl: String, index: Int) {
+        guard let url = URL(string: imageUrl) else {
             return
         }
 
-        DispatchQueue.global().async {
-            if let url = URL(string: urlString) {
-                do {
-                    let data = try Data(contentsOf: url)
-                    let image = UIImage(data: data)
-                    DispatchQueue.main.async {
-                        completion(image)
-                    }
-                } catch {
-                    print(error)
-                    DispatchQueue.main.async {
-                        completion(nil)
-                    }
+        let task = URLSession.shared.dataTask(with: url) { data, _, error in
+            if let error = error {
+                print(error)
+                return
+            }
+
+            if let data = data {
+                DispatchQueue.main.async {
+                    self.restaurantImage.append(UIImage(data: data) ?? UIImage(named: "NoImage")!)
+                    imageView.image = self.restaurantImage[index]
                 }
             } else {
-                DispatchQueue.main.async {
-                    completion(nil)
-                }
+                print("画像表示エラー")
             }
         }
+        task.resume()
     }
-
-
 }
 
 extension HomeViewController: HomePresenterOutput {
@@ -119,20 +122,11 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RecommendCell", for: indexPath) as! RecommendCollectionViewCell
-        if let name = self.restaurantData?.results.shop[indexPath.item].name,
-           let genre = self.restaurantData?.results.shop[indexPath.item].genre.name,
-           let imageURL = self.restaurantData?.results.shop[indexPath.item].photo.mobile.l{
-            cell.nameLabel.text = name
-            cell.genreLabel.text = genre
-            buildImage(urlString: imageURL) { image in
-                if let image = image {
-                    DispatchQueue.main.async {
-                        cell.shopImage.image = image
-                    }
-                } else {
-                    print("画像表示エラー")
-                }
-            }
+        if let restaurantData = self.restaurantData?.results.shop[indexPath.item] {
+            cell.nameLabel.text = restaurantData.name
+            cell.genreLabel.text = restaurantData.genre.name
+            cell.accessLabel.text = "\(restaurantData.stationName)駅"
+            showImage(imageView: cell.shopImage, imageUrl: restaurantData.photo.mobile.l, index: indexPath.item)
             indicatorView.stopAnimating()
             return cell
 
@@ -142,20 +136,22 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             return cell
         }
     }
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: "showDetail", sender: (self.restaurantData?.results.shop[indexPath.item], self.restaurantImage[indexPath.item]))
+    }
+
 }
 
 extension HomeViewController: UICollectionViewDelegateFlowLayout {
-
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 10 , left: 2 , bottom: 10 , right: 2 )
     }
 
-    // セルの左右
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 8
     }
 
-    // セルの上下
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 8
     }

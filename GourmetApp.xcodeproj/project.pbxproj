@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		8B53D0722B70FAD000E84948 /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B53D0712B70FAD000E84948 /* HomePresenter.swift */; };
 		8B53D0742B746E4F00E84948 /* ErrorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B53D0732B746E4F00E84948 /* ErrorModel.swift */; };
+		8B570D472B75F60C00560FB7 /* RestaurantDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B570D462B75F60C00560FB7 /* RestaurantDetailViewController.swift */; };
+		8B570D492B75F6B700560FB7 /* RestaurantDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B570D482B75F6B700560FB7 /* RestaurantDetail.storyboard */; };
 		8B8F02832B7074EC0066A4C5 /* RecommendCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8F02812B7074EC0066A4C5 /* RecommendCollectionViewCell.swift */; };
 		8B8F02842B7074EC0066A4C5 /* RecommendCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B8F02822B7074EC0066A4C5 /* RecommendCollectionViewCell.xib */; };
 		8B8F02872B7096D70066A4C5 /* HomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8F02862B7096D70066A4C5 /* HomeModel.swift */; };
@@ -44,6 +46,8 @@
 /* Begin PBXFileReference section */
 		8B53D0712B70FAD000E84948 /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
 		8B53D0732B746E4F00E84948 /* ErrorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorModel.swift; sourceTree = "<group>"; };
+		8B570D462B75F60C00560FB7 /* RestaurantDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantDetailViewController.swift; sourceTree = "<group>"; };
+		8B570D482B75F6B700560FB7 /* RestaurantDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RestaurantDetail.storyboard; sourceTree = "<group>"; };
 		8B8F02812B7074EC0066A4C5 /* RecommendCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendCollectionViewCell.swift; sourceTree = "<group>"; };
 		8B8F02822B7074EC0066A4C5 /* RecommendCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecommendCollectionViewCell.xib; sourceTree = "<group>"; };
 		8B8F02862B7096D70066A4C5 /* HomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModel.swift; sourceTree = "<group>"; };
@@ -101,6 +105,7 @@
 			children = (
 				8B8F027A2B7064500066A4C5 /* ViewController */,
 				8B8F02792B7064360066A4C5 /* Storyboard */,
+				8B8F02802B7073ED0066A4C5 /* CollectionViewCell */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -109,6 +114,7 @@
 			isa = PBXGroup;
 			children = (
 				8BD7CF092B6DEAEB00E0687D /* Main.storyboard */,
+				8B570D482B75F6B700560FB7 /* RestaurantDetail.storyboard */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -117,7 +123,7 @@
 			isa = PBXGroup;
 			children = (
 				8BD7CF072B6DEAEB00E0687D /* HomeViewController.swift */,
-				8B8F02802B7073ED0066A4C5 /* CollectionViewCell */,
+				8B570D462B75F60C00560FB7 /* RestaurantDetailViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -301,6 +307,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B570D492B75F6B700560FB7 /* RestaurantDetail.storyboard in Resources */,
 				8BD7CF102B6DEAEC00E0687D /* LaunchScreen.storyboard in Resources */,
 				8B8F02842B7074EC0066A4C5 /* RecommendCollectionViewCell.xib in Resources */,
 				8BD7CF0D2B6DEAEC00E0687D /* Assets.xcassets in Resources */,
@@ -336,6 +343,7 @@
 				8B8F02872B7096D70066A4C5 /* HomeModel.swift in Sources */,
 				8B8F02892B70C3C50066A4C5 /* RestaurantDataModel.swift in Sources */,
 				8B53D0742B746E4F00E84948 /* ErrorModel.swift in Sources */,
+				8B570D472B75F60C00560FB7 /* RestaurantDetailViewController.swift in Sources */,
 				8B8F02832B7074EC0066A4C5 /* RecommendCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
