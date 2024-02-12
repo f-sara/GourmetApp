@@ -12,15 +12,15 @@ final class HomeViewController: UIViewController {
     private let locationManager = CLLocationManager()
     private var latitude: Double = 0.0
     private var longitude: Double = 0.0
-
+    
     private var presenter: HomePresenter!
     private var restaurantData: RestaurantDataModel?
     private var restaurantImage: [UIImage?] = []
-
+    
     @IBOutlet @ViewLoading var searchBar: UISearchBar
     @IBOutlet @ViewLoading var indicatorView: UIActivityIndicatorView
     @IBOutlet @ViewLoading var collectionView: UICollectionView
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.register(UINib(nibName: "RecommendCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "RecommendCell")
@@ -30,48 +30,44 @@ final class HomeViewController: UIViewController {
         collectionView.keyboardDismissMode = .onDrag
         locationManager.requestWhenInUseAuthorization()
     }
-
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
-
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetail" {
             let restaurantDetailViewController = segue.destination as! RestaurantDetailViewController
-            restaurantDetailViewController.restaurantDetail = sender as? Shop
+            //            restaurantDetailViewController.restaurantDetail = sender as? Shop
+            restaurantDetailViewController.restaurantDetail = sender as! (Shop, UIImage)
         }
     }
-
+    
     private func searchBarClose(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
     }
 
-    private func buildImage(urlString: String?, completion: @escaping (UIImage?) -> Void) {
-        guard let urlString = urlString else {
-            completion(nil)
-            return
+    private func showImage(imageView: UIImageView, imageUrl: String, index: Int) {
+        guard let url = URL(string: imageUrl) else {
+             return
         }
 
-        DispatchQueue.global().async {
-            if let url = URL(string: urlString) {
-                do {
-                    let data = try Data(contentsOf: url)
-                    let image = UIImage(data: data)
-                    DispatchQueue.main.async {
-                        completion(image)
-                    }
-                } catch {
-                    print(error)
-                    DispatchQueue.main.async {
-                        completion(nil)
-                    }
+        let task = URLSession.shared.dataTask(with: url) { data, _, error in
+            if let error = error {
+                print(error)
+                return
+            }
+
+            if let data = data {
+                DispatchQueue.main.async {
+                    self.restaurantImage.append(UIImage(data: data))
+                    imageView.image = self.restaurantImage[index]
                 }
             } else {
-                DispatchQueue.main.async {
-                    completion(nil)
-                }
+                print("画像表示エラー")
             }
         }
+        task.resume()
     }
 }
 
@@ -82,7 +78,7 @@ extension HomeViewController: HomePresenterOutput {
             self.collectionView.reloadData()
         }
     }
-
+    
     func showError(error: Error) {
         print(error)
     }
@@ -96,11 +92,11 @@ extension HomeViewController: CLLocationManagerDelegate {
             self.presenter.fetchRestaurantData(latitude: self.latitude, longitude: self.longitude, keyword: nil)
         }
     }
-
+    
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("error: \(error)")
     }
-
+    
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         switch status {
         case .authorizedWhenInUse:
@@ -115,7 +111,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if let shopCount = self.restaurantData?.results.shop.count {
             return shopCount
@@ -123,52 +119,44 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             return 0
         }
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RecommendCell", for: indexPath) as! RecommendCollectionViewCell
         if let restaurantData = self.restaurantData?.results.shop[indexPath.item] {
             cell.nameLabel.text = restaurantData.name
             cell.genreLabel.text = restaurantData.genre.name
-            buildImage(urlString: restaurantData.photo.mobile.l) { image in
-                if let image {
-                    DispatchQueue.main.async {
-                        cell.shopImage.image = image
-                    }
-                } else {
-                    print("画像表示エラー")
-                }
-            }
+            showImage(imageView: cell.shopImage, imageUrl: restaurantData.photo.mobile.l, index: indexPath.item)
             indicatorView.stopAnimating()
             return cell
-
+            
         } else {
             cell.nameLabel.text = ""
             cell.genreLabel.text = ""
             return cell
         }
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.performSegue(withIdentifier: "showDetail", sender: self.restaurantData?.results.shop[indexPath.item])
+        self.performSegue(withIdentifier: "showDetail", sender: (self.restaurantData?.results.shop[indexPath.item], self.restaurantImage[indexPath.item]))
     }
-
+    
 }
 
 extension HomeViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 10 , left: 2 , bottom: 10 , right: 2 )
     }
-
+    
     // セルの左右
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 8
     }
-
+    
     // セルの上下
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 8
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let widthSize = (collectionView.bounds.width - 14) / 2
         let heightSize = widthSize * 1.3

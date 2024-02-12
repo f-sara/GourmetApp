@@ -10,7 +10,8 @@ import UIKit
 
 final class RestaurantDetailViewController: UIViewController {
 
-    var restaurantDetail: Shop?
+    //    var restaurantDetail: Shop?
+    var restaurantDetail: (Shop?, UIImage?)
 
     @IBOutlet @ViewLoading var shopNameLabel: UILabel
     @IBOutlet @ViewLoading var addressLabel: UILabel
@@ -19,49 +20,14 @@ final class RestaurantDetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let restaurantDetailInfo = restaurantDetail{
+        if let restaurantDetailInfo = restaurantDetail.0,
+           let restaurantDetailImage = restaurantDetail.1 {
             shopNameLabel.text = restaurantDetailInfo.name
             addressLabel.text = restaurantDetailInfo.address
             catchLabel.text = restaurantDetailInfo.shopCatch
-            buildImage(urlString: restaurantDetailInfo.photo.mobile.l) { image in
-                if let image {
-                    DispatchQueue.main.async {
-                        self.shopImage.image = image
-                    }
-                } else {
-                    print("画像表示エラー")
-                }
-            }
+            shopImage.image = restaurantDetailImage
         } else {
             shopNameLabel.text = "なし"
-        }
-    }
-
-    private func buildImage(urlString: String?, completion: @escaping (UIImage?) -> Void) {
-        guard let urlString = urlString else {
-            completion(nil)
-            return
-        }
-
-        DispatchQueue.global().async {
-            if let url = URL(string: urlString) {
-                do {
-                    let data = try Data(contentsOf: url)
-                    let image = UIImage(data: data)
-                    DispatchQueue.main.async {
-                        completion(image)
-                    }
-                } catch {
-                    print(error)
-                    DispatchQueue.main.async {
-                        completion(nil)
-                    }
-                }
-            } else {
-                DispatchQueue.main.async {
-                    completion(nil)
-                }
-            }
         }
     }
 
