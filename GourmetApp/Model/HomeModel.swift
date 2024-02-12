@@ -32,8 +32,8 @@ final class HomeModel {
                 do {
                     let responseData = try self.decodeAPIResponse(responseData: data)
                     completion(.success(responseData))
-                } catch {
-                    completion(.failure(APIError.decodeError))
+                } catch let error {
+                    completion(.failure(APIError.decodeError(error)))
                 }
 
             }
@@ -54,14 +54,17 @@ final class HomeModel {
                 URLQueryItem(name: "lat", value: latitude.description),
                 URLQueryItem(name: "lng", value: longitude.description),
                 URLQueryItem(name: "keyword", value: keyword),
-                URLQueryItem(name: "format", value: format)
+                URLQueryItem(name: "format", value: format),
+                URLQueryItem(name: "count", value: "20")
             ]
         } else {
             urlComponents?.queryItems = [
                 URLQueryItem(name: "key", value: apiKey),
                 URLQueryItem(name: "lat", value: latitude.description),
                 URLQueryItem(name: "lng", value: longitude.description),
-                URLQueryItem(name: "format", value: format)
+                URLQueryItem(name: "format", value: format),
+                URLQueryItem(name: "range", value: "5"),
+                URLQueryItem(name: "count", value: "20")
             ]
         }
         return urlComponents?.url
