@@ -20,7 +20,6 @@ final class RestaurantDetailViewController: UIViewController {
     @IBOutlet @ViewLoading var shopImage: UIImageView
     @IBOutlet @ViewLoading var genreLabel: UILabel
     @IBOutlet @ViewLoading var openLabel: UILabel
-    @IBOutlet @ViewLoading var seatLabel: UILabel
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +30,8 @@ final class RestaurantDetailViewController: UIViewController {
             catchLabel.text = restaurantDetailInfo.genre.genreCatch
             subCatchLabel.text = restaurantDetailInfo.shopCatch
             genreLabel.text = restaurantDetailInfo.genre.name
-            openLabel.text = "定休日：\(restaurantDetailInfo.close)"
+//            openLabel.text = "定休日：\(restaurantDetailInfo.close)"
+            openLabel.text = restaurantDetailInfo.open
             shopImage.image = restaurantDetailImage
         }
     }

@@ -19,8 +19,8 @@ struct Shop: Decodable {
     let photo: Photo
     let address: String
     let close: String
+    let open: String
     let shopCatch: String
-//    let capacity: Int?
     let urls: Urls
 
     enum CodingKeys: String, CodingKey {
@@ -29,8 +29,8 @@ struct Shop: Decodable {
         case photo
         case address
         case close
+        case open
         case shopCatch = "catch"
-//        case capacity
         case urls
     }
 }
