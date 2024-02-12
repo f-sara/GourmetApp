@@ -22,6 +22,7 @@ struct Shop: Decodable {
     let open: String
     let shopCatch: String
     let urls: Urls
+    let stationName: String
 
     enum CodingKeys: String, CodingKey {
         case name
@@ -32,6 +33,7 @@ struct Shop: Decodable {
         case open
         case shopCatch = "catch"
         case urls
+        case stationName = "station_name"
     }
 }
 

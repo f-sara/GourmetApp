@@ -125,6 +125,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         if let restaurantData = self.restaurantData?.results.shop[indexPath.item] {
             cell.nameLabel.text = restaurantData.name
             cell.genreLabel.text = restaurantData.genre.name
+            cell.accessLabel.text = "\(restaurantData.stationName)駅"
             showImage(imageView: cell.shopImage, imageUrl: restaurantData.photo.mobile.l, index: indexPath.item)
             indicatorView.stopAnimating()
             return cell
