@@ -15,7 +15,7 @@ final class HomeViewController: UIViewController {
     
     private var presenter: HomePresenter!
     private var restaurantData: RestaurantDataModel?
-    private var restaurantImage: [UIImage?] = []
+    private var restaurantImage: [UIImage] = []
     
     @IBOutlet @ViewLoading var searchBar: UISearchBar
     @IBOutlet @ViewLoading var indicatorView: UIActivityIndicatorView
@@ -60,7 +60,7 @@ final class HomeViewController: UIViewController {
 
             if let data = data {
                 DispatchQueue.main.async {
-                    self.restaurantImage.append(UIImage(data: data))
+                    self.restaurantImage.append(UIImage(data: data) ?? UIImage(named: "NoImage")!)
                     imageView.image = self.restaurantImage[index]
                 }
             } else {

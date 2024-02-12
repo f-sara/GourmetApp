@@ -105,6 +105,7 @@
 			children = (
 				8B8F027A2B7064500066A4C5 /* ViewController */,
 				8B8F02792B7064360066A4C5 /* Storyboard */,
+				8B8F02802B7073ED0066A4C5 /* CollectionViewCell */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -123,7 +124,6 @@
 			children = (
 				8BD7CF072B6DEAEB00E0687D /* HomeViewController.swift */,
 				8B570D462B75F60C00560FB7 /* RestaurantDetailViewController.swift */,
-				8B8F02802B7073ED0066A4C5 /* CollectionViewCell */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
