@@ -9,7 +9,7 @@ enum APIError: Error {
     case failCreateURL
     case sessionError
     case requestError(Error)
-    case decodeError
+    case decodeError(Error)
 }
 
 enum DataError: Error {

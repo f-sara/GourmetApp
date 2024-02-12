@@ -16,7 +16,11 @@ final class RestaurantDetailViewController: UIViewController {
     @IBOutlet @ViewLoading var shopNameLabel: UILabel
     @IBOutlet @ViewLoading var addressLabel: UILabel
     @IBOutlet @ViewLoading var catchLabel: UILabel
+    @IBOutlet @ViewLoading var subCatchLabel: UILabel
     @IBOutlet @ViewLoading var shopImage: UIImageView
+    @IBOutlet @ViewLoading var genreLabel: UILabel
+    @IBOutlet @ViewLoading var openLabel: UILabel
+    @IBOutlet @ViewLoading var seatLabel: UILabel
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,10 +28,18 @@ final class RestaurantDetailViewController: UIViewController {
            let restaurantDetailImage = restaurantDetail.1 {
             shopNameLabel.text = restaurantDetailInfo.name
             addressLabel.text = restaurantDetailInfo.address
-            catchLabel.text = restaurantDetailInfo.shopCatch
+            catchLabel.text = restaurantDetailInfo.genre.genreCatch
+            subCatchLabel.text = restaurantDetailInfo.shopCatch
+            genreLabel.text = restaurantDetailInfo.genre.name
+            openLabel.text = "定休日：\(restaurantDetailInfo.close)"
             shopImage.image = restaurantDetailImage
-        } else {
-            shopNameLabel.text = "なし"
+        }
+    }
+
+    @IBAction func openWebSite(_ sender: UIButton) {
+        if let restaurantURL = restaurantDetail.0?.urls.pc {
+            guard let url = URL(string: restaurantURL) else {return}
+            UIApplication.shared.open(url)
         }
     }
 

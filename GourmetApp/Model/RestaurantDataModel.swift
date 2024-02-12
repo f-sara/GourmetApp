@@ -18,23 +18,31 @@ struct Shop: Decodable {
     let genre: Genre
     let photo: Photo
     let address: String
-    let open: String
     let close: String
     let shopCatch: String
+//    let capacity: Int?
+    let urls: Urls
 
     enum CodingKeys: String, CodingKey {
         case name
         case genre
         case photo
         case address
-        case open
         case close
         case shopCatch = "catch"
+//        case capacity
+        case urls
     }
 }
 
 struct Genre: Decodable {
     let name: String
+    let genreCatch: String
+
+    enum CodingKeys: String, CodingKey {
+        case name
+        case genreCatch = "catch"
+    }
 }
 
 struct Photo: Decodable {
@@ -45,3 +53,6 @@ struct Mobile: Decodable {
     let l: String
 }
 
+struct Urls: Decodable {
+    let pc: String
+}
