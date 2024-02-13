@@ -87,8 +87,8 @@
                                     <outlet property="delegate" destination="2OJ-rx-GU8" id="AEM-qJ-937"/>
                                 </connections>
                             </collectionView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="fcQ-5O-sbb">
-                                <rect key="frame" x="15" y="245.33333333333334" width="400" height="62.666666666666657"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="fcQ-5O-sbb">
+                                <rect key="frame" x="15" y="245.33333333333334" width="400" height="57.666666666666657"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ErrorMessage" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jrb-LS-O2x">
                                         <rect key="frame" x="0.0" y="0.0" width="400" height="20.333333333333332"/>
@@ -97,7 +97,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I2h-l8-bec">
-                                        <rect key="frame" x="0.0" y="28.333333333333346" width="400" height="34.333333333333343"/>
+                                        <rect key="frame" x="0.0" y="23.333333333333346" width="400" height="34.333333333333343"/>
                                         <buttonConfiguration key="configuration" style="plain" title="設定を開く"/>
                                         <connections>
                                             <action selector="openSetting" destination="2OJ-rx-GU8" eventType="touchUpInside" id="cvC-ec-QHM"/>

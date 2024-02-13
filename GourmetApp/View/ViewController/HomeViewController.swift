@@ -17,6 +17,7 @@ final class HomeViewController: UIViewController, UISearchBarDelegate {
     private var restaurantData: RestaurantDataModel?
     private var restaurantImage: [UIImage] = []
     private var range: String = "1"
+    private var permissionLocation: Bool = false
 
     @IBOutlet @ViewLoading var searchBar: UISearchBar
     @IBOutlet @ViewLoading var indicatorView: UIActivityIndicatorView
@@ -65,7 +66,9 @@ final class HomeViewController: UIViewController, UISearchBarDelegate {
         selectedRangeButton.showsMenuAsPrimaryAction = true
         selectedRangeButton.setTitle(selectedRange.range, for: .normal)
         range = selectedRange.rangeValue
-        self.presenter.fetchRestaurantData(latitude: latitude, longitude: longitude, keyword: nil, range: range)
+        if permissionLocation == true {
+            self.presenter.fetchRestaurantData(latitude: latitude, longitude: longitude, keyword: nil, range: range)
+        }
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -128,6 +131,9 @@ extension HomeViewController: CLLocationManagerDelegate {
         switch status {
         case .authorizedWhenInUse:
             self.locationManager.requestLocation()
+            permissionLocation = true
+            errorMessageLabel.isHidden = true
+            openSettingButton.isHidden = true
         default:
             let title = "位置情報の利用が許可されていません"
             let massage = "店舗検索を行うには位置情報の取得を許可してください"
@@ -136,6 +142,10 @@ extension HomeViewController: CLLocationManagerDelegate {
                 UIApplication.shared.open(settingUrl)
             })
             showAlert(title: title, massage: massage, buttonAction: action)
+            errorMessageLabel.text = "位置情報の利用が許可されていません"
+            indicatorView.stopAnimating()
+            errorMessageLabel.isHidden = false
+            openSettingButton.isHidden = false
         }
     }
 }
@@ -147,11 +157,11 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if let shopCount = self.restaurantData?.results.shop.count {
-            if shopCount == 0 {
+            if shopCount == 0 && errorMessageLabel.isHidden == true {
                 indicatorView.stopAnimating()
                 errorMessageLabel.text = "お店が見つかりませんでした"
                 errorMessageLabel.isHidden = false
-            } else {
+            } else if shopCount >= 1 {
                 errorMessageLabel.isHidden = true
             }
             return shopCount
