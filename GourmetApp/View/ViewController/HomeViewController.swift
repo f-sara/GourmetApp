@@ -22,6 +22,8 @@ final class HomeViewController: UIViewController, UISearchBarDelegate {
     @IBOutlet @ViewLoading var indicatorView: UIActivityIndicatorView
     @IBOutlet @ViewLoading var collectionView: UICollectionView
     @IBOutlet @ViewLoading var selectedRangeButton: UIButton
+    @IBOutlet @ViewLoading var errorMessageLabel: UILabel
+    @IBOutlet @ViewLoading var openSettingButton: UIButton
 
     private var selectedRange = MenuRangeType.range1
 
@@ -35,6 +37,13 @@ final class HomeViewController: UIViewController, UISearchBarDelegate {
         collectionView.keyboardDismissMode = .onDrag
         locationManager.requestWhenInUseAuthorization()
         configureRange()
+        errorMessageLabel.isHidden = true
+        openSettingButton.isHidden = true
+    }
+
+    @IBAction func openSetting() {
+        let settingsURL = URL(string: UIApplication.openSettingsURLString)!
+        UIApplication.shared.open(settingsURL)
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -138,6 +147,13 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if let shopCount = self.restaurantData?.results.shop.count {
+            if shopCount == 0 {
+                indicatorView.stopAnimating()
+                errorMessageLabel.text = "お店が見つかりませんでした"
+                errorMessageLabel.isHidden = false
+            } else {
+                errorMessageLabel.isHidden = true
+            }
             return shopCount
         } else {
             return 0
