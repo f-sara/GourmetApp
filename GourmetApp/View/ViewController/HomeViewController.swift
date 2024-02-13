@@ -135,13 +135,6 @@ extension HomeViewController: CLLocationManagerDelegate {
             errorMessageLabel.isHidden = true
             openSettingButton.isHidden = true
         default:
-            let title = "位置情報の利用が許可されていません"
-            let massage = "店舗検索を行うには位置情報の取得を許可してください"
-            let settingUrl = URL(string:UIApplication.openSettingsURLString)!
-            let action = UIAlertAction(title: "許可", style: .default, handler: { (action) -> Void in
-                UIApplication.shared.open(settingUrl)
-            })
-            showAlert(title: title, massage: massage, buttonAction: action)
             errorMessageLabel.text = "位置情報の利用が許可されていません"
             indicatorView.stopAnimating()
             errorMessageLabel.isHidden = false
