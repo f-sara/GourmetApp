@@ -8,7 +8,7 @@
 import UIKit
 import CoreLocation
 
-final class HomeViewController: UIViewController {
+final class HomeViewController: UIViewController, UISearchBarDelegate {
     private let locationManager = CLLocationManager()
     private var latitude: Double = 0.0
     private var longitude: Double = 0.0
@@ -26,6 +26,7 @@ final class HomeViewController: UIViewController {
         collectionView.register(UINib(nibName: "RecommendCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "RecommendCell")
         presenter = HomePresenter(output: self, model: HomeModel())
         locationManager.delegate = self
+        searchBar.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyKilometer
         collectionView.keyboardDismissMode = .onDrag
         locationManager.requestWhenInUseAuthorization()
@@ -46,28 +47,13 @@ final class HomeViewController: UIViewController {
         searchBar.resignFirstResponder()
     }
 
-    private func showImage(imageView: UIImageView, imageUrl: String, index: Int) {
-        guard let url = URL(string: imageUrl) else {
-            return
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        view.endEditing(true)
+        if let word = searchBar.text {
+            self.presenter.fetchRestaurantData(latitude: latitude, longitude: longitude, keyword: word)
         }
-
-        let task = URLSession.shared.dataTask(with: url) { data, _, error in
-            if let error = error {
-                print(error)
-                return
-            }
-
-            if let data = data {
-                DispatchQueue.main.async {
-                    self.restaurantImage.append(UIImage(data: data) ?? UIImage(named: "NoImage")!)
-                    imageView.image = self.restaurantImage[index]
-                }
-            } else {
-                print("画像表示エラー")
-            }
-        }
-        task.resume()
     }
+
 }
 
 extension HomeViewController: HomePresenterOutput {
