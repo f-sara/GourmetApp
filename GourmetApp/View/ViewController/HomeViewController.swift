@@ -54,6 +54,15 @@ final class HomeViewController: UIViewController, UISearchBarDelegate {
         }
     }
 
+    private func showAlert(title: String, massage: String, buttonAction: UIAlertAction) {
+        let alert = UIAlertController(title: title, message: massage, preferredStyle: .alert)
+        let action = buttonAction
+        let cancel = UIAlertAction(title: "閉じる", style: .cancel, handler: { (action) -> Void in })
+        alert.addAction(action)
+        alert.addAction(cancel)
+        self.present(alert, animated: true, completion: nil)
+    }
+
 }
 
 extension HomeViewController: HomePresenterOutput {
@@ -88,7 +97,13 @@ extension HomeViewController: CLLocationManagerDelegate {
         case .authorizedWhenInUse:
             self.locationManager.requestLocation()
         default:
-            print("位置情報サービスの利用が許可されていません。")
+            let title = "位置情報の利用が許可されていません"
+            let massage = "店舗検索を行うには位置情報の取得を許可してください"
+            let settingUrl = URL(string:UIApplication.openSettingsURLString)!
+            let action = UIAlertAction(title: "許可", style: .default, handler: { (action) -> Void in
+                UIApplication.shared.open(settingUrl)
+            })
+            showAlert(title: title, massage: massage, buttonAction: action)
         }
     }
 }
