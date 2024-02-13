@@ -28,7 +28,7 @@ class RecommendCollectionViewCell: UICollectionViewCell {
 
     func setUp(restaurantData: Shop) {
         nameLabel.text = restaurantData.name
-        nearStationLabel.text = restaurantData.stationName
+        nearStationLabel.text = "\(restaurantData.stationName)駅"
         genreLabel.text = restaurantData.genre.name
         showImage(imageUrl: restaurantData.photo.mobile.l)
     }
