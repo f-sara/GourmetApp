@@ -87,10 +87,10 @@
             </constraints>
             <size key="customSize" width="235" height="336"/>
             <connections>
-                <outlet property="accessLabel" destination="0YQ-fI-MRq" id="aCV-Mx-3EW"/>
                 <outlet property="genreLabel" destination="yrQ-zx-dzp" id="ok9-Wc-m6G"/>
                 <outlet property="nameLabel" destination="mKg-zX-TLl" id="QQx-gL-pxD"/>
-                <outlet property="shopImage" destination="ii6-gv-rEE" id="zbF-wK-5cJ"/>
+                <outlet property="nearStationLabel" destination="0YQ-fI-MRq" id="aCV-Mx-3EW"/>
+                <outlet property="shopImage" destination="ii6-gv-rEE" id="8Va-md-vIc"/>
             </connections>
             <point key="canvasLocation" x="158.01526717557252" y="76.056338028169023"/>
         </collectionViewCell>

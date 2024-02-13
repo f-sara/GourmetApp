@@ -38,8 +38,7 @@ final class HomeViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetail" {
             let restaurantDetailViewController = segue.destination as! RestaurantDetailViewController
-            //            restaurantDetailViewController.restaurantDetail = sender as? Shop
-            restaurantDetailViewController.restaurantDetail = sender as! (Shop, UIImage)
+            restaurantDetailViewController.restaurantDetail = sender as? Shop
         }
     }
 
@@ -74,6 +73,7 @@ final class HomeViewController: UIViewController {
 extension HomeViewController: HomePresenterOutput {
     func updateUI(_ restaurantModel: RestaurantDataModel?) {
         self.restaurantData = restaurantModel
+        self.restaurantImage = []
         Task {
             self.collectionView.reloadData()
         }
@@ -121,24 +121,17 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RecommendCell", for: indexPath) as! RecommendCollectionViewCell
-        if let restaurantData = self.restaurantData?.results.shop[indexPath.item] {
-            cell.nameLabel.text = restaurantData.name
-            cell.genreLabel.text = restaurantData.genre.name
-            cell.accessLabel.text = "\(restaurantData.stationName)駅"
-            showImage(imageView: cell.shopImage, imageUrl: restaurantData.photo.mobile.l, index: indexPath.item)
-            indicatorView.stopAnimating()
-            return cell
-
-        } else {
-            cell.nameLabel.text = ""
-            cell.genreLabel.text = ""
-            return cell
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RecommendCell", for: indexPath) as? RecommendCollectionViewCell,
+              let restaurantData = self.restaurantData?.results.shop[indexPath.item] else {
+            return RecommendCollectionViewCell()
         }
+        cell.setUp(restaurantData: restaurantData)
+        indicatorView.stopAnimating()
+        return cell
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.performSegue(withIdentifier: "showDetail", sender: (self.restaurantData?.results.shop[indexPath.item], self.restaurantImage[indexPath.item]))
+        self.performSegue(withIdentifier: "showDetail", sender: self.restaurantData?.results.shop[indexPath.item])
     }
 
 }
