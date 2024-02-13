@@ -16,10 +16,14 @@ final class HomeViewController: UIViewController, UISearchBarDelegate {
     private var presenter: HomePresenter!
     private var restaurantData: RestaurantDataModel?
     private var restaurantImage: [UIImage] = []
+    private var range: String = "1"
 
     @IBOutlet @ViewLoading var searchBar: UISearchBar
     @IBOutlet @ViewLoading var indicatorView: UIActivityIndicatorView
     @IBOutlet @ViewLoading var collectionView: UICollectionView
+    @IBOutlet @ViewLoading var selectedRangeButton: UIButton
+
+    private var selectedRange = MenuRangeType.range1
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,10 +34,29 @@ final class HomeViewController: UIViewController, UISearchBarDelegate {
         locationManager.desiredAccuracy = kCLLocationAccuracyKilometer
         collectionView.keyboardDismissMode = .onDrag
         locationManager.requestWhenInUseAuthorization()
+        configureRange()
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
+    }
+
+    private func configureRange() {
+        let actions = MenuRangeType.allCases
+            .compactMap { type in
+                UIAction(
+                    title: type.range,
+                    state: type == selectedRange ? .on : .off,
+                    handler: { _ in
+                        self.selectedRange = type
+                        self.configureRange()
+                    })
+            }
+        selectedRangeButton.menu = UIMenu(title: "", options: .displayInline, children: actions)
+        selectedRangeButton.showsMenuAsPrimaryAction = true
+        selectedRangeButton.setTitle(selectedRange.range, for: .normal)
+        range = selectedRange.rangeValue
+        self.presenter.fetchRestaurantData(latitude: latitude, longitude: longitude, keyword: nil, range: range)
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -50,7 +73,7 @@ final class HomeViewController: UIViewController, UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         view.endEditing(true)
         if let word = searchBar.text {
-            self.presenter.fetchRestaurantData(latitude: latitude, longitude: longitude, keyword: word)
+            self.presenter.fetchRestaurantData(latitude: latitude, longitude: longitude, keyword: word, range: range)
         }
     }
 
@@ -84,7 +107,7 @@ extension HomeViewController: CLLocationManagerDelegate {
         if let location = locations.last {
             latitude = location.coordinate.latitude
             longitude = location.coordinate.longitude
-            self.presenter.fetchRestaurantData(latitude: self.latitude, longitude: self.longitude, keyword: nil)
+            self.presenter.fetchRestaurantData(latitude: self.latitude, longitude: self.longitude, keyword: nil, range: range)
         }
     }
 

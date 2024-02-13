@@ -8,7 +8,7 @@
 import Foundation
 
 protocol HomePresenterInput: AnyObject {
-    func fetchRestaurantData(latitude: Double, longitude: Double, keyword: String?)
+    func fetchRestaurantData(latitude: Double, longitude: Double, keyword: String?, range: String)
 }
 
 protocol HomePresenterOutput: AnyObject {
@@ -27,8 +27,8 @@ final class HomePresenter {
 }
 
 extension HomePresenter: HomePresenterInput {
-    func fetchRestaurantData(latitude: Double, longitude: Double, keyword: String?) {
-        model.fetchRestaurantData(latitude: latitude, longitude: longitude, keyword: keyword) { [weak self]  result in
+    func fetchRestaurantData(latitude: Double, longitude: Double, keyword: String?, range: String) {
+        model.fetchRestaurantData(latitude: latitude, longitude: longitude, keyword: keyword, range: range) { [weak self]  result in
             guard let self = self else {
                 return
             }

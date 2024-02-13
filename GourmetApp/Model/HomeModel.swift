@@ -9,9 +9,9 @@ import Foundation
 
 final class HomeModel {
     
-    func fetchRestaurantData(latitude: Double, longitude: Double, keyword: String?, completion: @escaping (Result<RestaurantDataModel, APIError>) -> Void) {
-        let apiURL = createAPIURL(latitude: latitude, longitude: longitude, keyword: keyword)
-        
+    func fetchRestaurantData(latitude: Double, longitude: Double, keyword: String?, range: String, completion: @escaping (Result<RestaurantDataModel, APIError>) -> Void) {
+        let apiURL = createAPIURL(latitude: latitude, longitude: longitude, keyword: keyword, range: range)
+
         guard let url = apiURL else {
             completion(.failure(APIError.failCreateURL))
             return
@@ -41,7 +41,7 @@ final class HomeModel {
         }
     }
     
-    private func createAPIURL(latitude: Double, longitude: Double, keyword: String?) -> URL? {
+    private func createAPIURL(latitude: Double, longitude: Double, keyword: String?, range: String) -> URL? {
         let baseURL: URL? = URL(string: "https://webservice.recruit.co.jp/hotpepper/gourmet/v1")
         let apiKey = ProcessInfo.processInfo.environment["apiKey"]
         let format = "json"
@@ -53,7 +53,7 @@ final class HomeModel {
             URLQueryItem(name: "lng", value: longitude.description),
             URLQueryItem(name: "format", value: format),
             URLQueryItem(name: "count", value: "20"),
-            URLQueryItem(name: "range", value: "5")
+            URLQueryItem(name: "range", value: range),
         ]
         
         if let keyword {

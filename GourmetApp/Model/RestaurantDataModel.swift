@@ -58,3 +58,41 @@ struct Mobile: Decodable {
 struct Urls: Decodable {
     let pc: String
 }
+
+enum MenuRangeType: CaseIterable {
+    case range1
+    case range2
+    case range3
+    case range4
+    case range5
+
+    var range: String {
+        switch self {
+        case .range1:
+            return "300m"
+        case .range2:
+            return "500m"
+        case .range3:
+            return "1,000m"
+        case .range4:
+            return "2,000m"
+        case .range5:
+            return "3,000m"
+        }
+    }
+
+    var rangeValue: String {
+        switch self {
+        case .range1:
+            return "1"
+        case .range2:
+            return "2"
+        case .range3:
+            return "3"
+        case .range4:
+            return "4"
+        case .range5:
+            return "5"
+        }
+    }
+}
