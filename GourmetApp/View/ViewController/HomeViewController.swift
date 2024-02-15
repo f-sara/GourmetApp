@@ -89,11 +89,9 @@ final class HomeViewController: UIViewController, UISearchBarDelegate {
         }
     }
 
-    private func showAlert(title: String, massage: String, buttonAction: UIAlertAction) {
+    private func showAlert(title: String, massage: String) {
         let alert = UIAlertController(title: title, message: massage, preferredStyle: .alert)
-        let action = buttonAction
         let cancel = UIAlertAction(title: "閉じる", style: .cancel, handler: { (action) -> Void in })
-        alert.addAction(action)
         alert.addAction(cancel)
         self.present(alert, animated: true, completion: nil)
     }
@@ -109,8 +107,10 @@ extension HomeViewController: HomePresenterOutput {
         }
     }
 
-    func showError(error: Error) {
-        print(error)
+    func showError(error: APIError) {
+        Task.detached { @MainActor in
+            self.showAlert(title: error.errorTitle, massage: error.errorMessage)
+        }
     }
 }
 

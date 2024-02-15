@@ -13,7 +13,7 @@ protocol HomePresenterInput: AnyObject {
 
 protocol HomePresenterOutput: AnyObject {
     func updateUI(_ restaurantModel: RestaurantDataModel?)
-    func showError(error: Error)
+    func showError(error: APIError)
 }
 
 final class HomePresenter {
