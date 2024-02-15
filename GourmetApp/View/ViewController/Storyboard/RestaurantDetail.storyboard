@@ -79,27 +79,6 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="sV1-hQ-trw">
-                                <rect key="frame" x="105.66666666666667" y="710.66666666666663" width="181.66666666666663" height="34.333333333333371"/>
-                                <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="safari" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="sbb-Kr-4mw">
-                                        <rect key="frame" x="0.0" y="8" width="20.333333333333332" height="19"/>
-                                        <color key="tintColor" systemColor="tintColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="sbb-Kr-4mw" secondAttribute="height" multiplier="1:1" id="rt4-ng-aeT"/>
-                                        </constraints>
-                                    </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CG1-zF-OtC">
-                                        <rect key="frame" x="20.333333333333329" y="0.0" width="161.33333333333337" height="34.333333333333336"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Webサイトに移動">
-                                            <fontDescription key="titleFontDescription" type="system" pointSize="17"/>
-                                        </buttonConfiguration>
-                                        <connections>
-                                            <action selector="openWebSite:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="rKM-dz-VIi"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                            </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="QrT-Ut-LEq">
                                 <rect key="frame" x="15" y="595.66666666666663" width="363" height="95"/>
                                 <subviews>
@@ -147,22 +126,36 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CG1-zF-OtC">
+                                <rect key="frame" x="105.66666666666669" y="705.66666666666663" width="182" height="34.333333333333371"/>
+                                <buttonConfiguration key="configuration" style="plain" image="safari" catalog="system" title="Webサイトに移動">
+                                    <fontDescription key="titleFontDescription" type="system" pointSize="17"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="openWebSite:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="rKM-dz-VIi"/>
+                                </connections>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hotpepper" translatesAutoresizingMaskIntoConstraints="NO" id="GB2-3f-XgS">
+                                <rect key="frame" x="243" y="755" width="135" height="17"/>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="jgS-l7-T5U" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="22R-Fd-zGy"/>
+                            <constraint firstItem="CG1-zF-OtC" firstAttribute="top" secondItem="QrT-Ut-LEq" secondAttribute="bottom" constant="15" id="9Lw-cs-TdR"/>
                             <constraint firstItem="jgS-l7-T5U" firstAttribute="height" secondItem="5EZ-qb-Rvc" secondAttribute="height" multiplier="0.45" id="EY4-a1-yOB"/>
-                            <constraint firstItem="sV1-hQ-trw" firstAttribute="top" secondItem="QrT-Ut-LEq" secondAttribute="bottom" constant="20" id="HW4-cW-Gcp"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="tsf-e6-nLe" secondAttribute="trailing" constant="15" id="K7l-7t-xrl"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="GB2-3f-XgS" secondAttribute="trailing" constant="15" id="KsA-N7-CdO"/>
                             <constraint firstItem="tsf-e6-nLe" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="15" id="RDH-bS-JfL"/>
                             <constraint firstItem="QrT-Ut-LEq" firstAttribute="width" secondItem="tsf-e6-nLe" secondAttribute="width" id="ZDT-sD-b0R"/>
+                            <constraint firstItem="GB2-3f-XgS" firstAttribute="top" secondItem="CG1-zF-OtC" secondAttribute="bottom" constant="15" id="gId-xE-yok"/>
                             <constraint firstItem="tsf-e6-nLe" firstAttribute="top" secondItem="jgS-l7-T5U" secondAttribute="bottom" constant="15" id="iRD-fr-gWx"/>
-                            <constraint firstItem="sV1-hQ-trw" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="lp9-JD-ne6"/>
                             <constraint firstItem="QrT-Ut-LEq" firstAttribute="top" secondItem="tsf-e6-nLe" secondAttribute="bottom" constant="25" id="ovl-v3-bta"/>
                             <constraint firstItem="jgS-l7-T5U" firstAttribute="width" secondItem="5EZ-qb-Rvc" secondAttribute="width" id="qTI-KL-ieY"/>
                             <constraint firstItem="QrT-Ut-LEq" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="sgd-kc-HFP"/>
                             <constraint firstItem="jgS-l7-T5U" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="t0Q-nQ-kI8"/>
+                            <constraint firstItem="CG1-zF-OtC" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="z9s-BJ-5QX"/>
                         </constraints>
                     </view>
                     <connections>
@@ -183,6 +176,7 @@
     <resources>
         <image name="clock" catalog="system" width="128" height="123"/>
         <image name="fork.knife" catalog="system" width="94" height="128"/>
+        <image name="hotpepper" width="135" height="17"/>
         <image name="mappin" catalog="system" width="106" height="128"/>
         <image name="safari" catalog="system" width="128" height="123"/>
         <systemColor name="systemBackgroundColor">
@@ -190,9 +184,6 @@
         </systemColor>
         <systemColor name="systemOrangeColor">
             <color red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="tintColor">
-            <color red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
