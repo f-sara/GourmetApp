@@ -10,8 +10,8 @@ import CoreLocation
 
 final class HomeViewController: UIViewController, UISearchBarDelegate {
     private let locationManager = CLLocationManager()
-    private var latitude: Double = 0.0
-    private var longitude: Double = 0.0
+    static var latitude: Double = 0.0
+    static var longitude: Double = 0.0
 
     private var presenter: HomePresenter!
     private var restaurantData: RestaurantDataModel?
@@ -67,7 +67,7 @@ final class HomeViewController: UIViewController, UISearchBarDelegate {
         selectedRangeButton.setTitle(selectedRange.range, for: .normal)
         range = selectedRange.rangeValue
         if permissionLocation == true {
-            self.presenter.fetchRestaurantData(latitude: latitude, longitude: longitude, keyword: nil, range: range)
+            self.presenter.fetchRestaurantData(keyword: nil, range: range)
         }
     }
 
@@ -85,7 +85,7 @@ final class HomeViewController: UIViewController, UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         view.endEditing(true)
         if let word = searchBar.text {
-            self.presenter.fetchRestaurantData(latitude: latitude, longitude: longitude, keyword: word, range: range)
+            self.presenter.fetchRestaurantData(keyword: word, range: range)
         }
     }
 
@@ -117,9 +117,9 @@ extension HomeViewController: HomePresenterOutput {
 extension HomeViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.last {
-            latitude = location.coordinate.latitude
-            longitude = location.coordinate.longitude
-            self.presenter.fetchRestaurantData(latitude: self.latitude, longitude: self.longitude, keyword: nil, range: range)
+            HomeViewController.latitude = location.coordinate.latitude
+            HomeViewController.longitude = location.coordinate.longitude
+            self.presenter.fetchRestaurantData(keyword: nil, range: range)
         }
     }
 

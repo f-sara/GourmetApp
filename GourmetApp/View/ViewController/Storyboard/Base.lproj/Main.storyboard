@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" bouncesZoom="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="eZn-YP-D0g">
-                                <rect key="frame" x="0.0" y="103" width="430" height="746"/>
+                                <rect key="frame" x="0.0" y="108" width="430" height="741"/>
                                 <color key="backgroundColor" systemColor="systemGray6Color"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="0cU-sX-Zfx">
                                     <size key="itemSize" width="128" height="128"/>
@@ -40,7 +40,7 @@
                             <constraint firstItem="eZn-YP-D0g" firstAttribute="leading" secondItem="quw-fH-0LN" secondAttribute="leading" id="BAI-1Z-dbE"/>
                             <constraint firstItem="eZn-YP-D0g" firstAttribute="centerX" secondItem="MBW-cN-Gyf" secondAttribute="centerX" id="fsu-r9-Y9Y"/>
                             <constraint firstItem="quw-fH-0LN" firstAttribute="bottom" secondItem="eZn-YP-D0g" secondAttribute="bottom" id="mTZ-hn-laD"/>
-                            <constraint firstItem="eZn-YP-D0g" firstAttribute="top" secondItem="quw-fH-0LN" secondAttribute="top" id="tZe-VB-KzC"/>
+                            <constraint firstItem="eZn-YP-D0g" firstAttribute="top" secondItem="quw-fH-0LN" secondAttribute="top" constant="5" id="tZe-VB-KzC"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="ジャンルで検索" id="9xp-Vi-CGP"/>

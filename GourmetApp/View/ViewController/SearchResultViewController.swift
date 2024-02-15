@@ -9,13 +9,9 @@ import UIKit
 
 final class SearchResultViewController: UIViewController {
 
-    private var latitude: Double = 35.7020691
-    private var longitude: Double = 139.7753269
-    private var restaurantData: RestaurantDataModel?
-
-    private var presenter: SearchResultPresenter!
-
     var genre: String?
+    private var restaurantData: RestaurantDataModel?
+    private var presenter: SearchResultPresenter!
 
     @IBOutlet @ViewLoading var errorMessageLabel: UILabel
     @IBOutlet @ViewLoading var indicatorView: UIActivityIndicatorView
@@ -26,7 +22,7 @@ final class SearchResultViewController: UIViewController {
         self.presenter = SearchResultPresenter(output: self, apiClient: APIClient())
         collectionView.register(UINib(nibName: "RecommendCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "RecommendCell")
         if let genre {
-            presenter.viewAppear(latitude: latitude, longitude: longitude, genre: genre)
+            presenter.viewAppear(genre: genre)
         }
         errorMessageLabel.isHidden = true
     }

@@ -8,7 +8,7 @@
 import Foundation
 
 protocol SearchResultPresenterInput: AnyObject {
-    func viewAppear(latitude: Double, longitude: Double, genre: String)
+    func viewAppear(genre: String)
 }
 
 protocol SearchResultPresenterOutput: AnyObject {
@@ -27,8 +27,8 @@ final class SearchResultPresenter {
 }
 
 extension SearchResultPresenter: SearchResultPresenterInput {
-    func viewAppear(latitude: Double, longitude: Double, genre: String) {
-        apiClient.fetchRestaurantData(latitude: latitude, longitude: longitude, keyword: nil, range: "3", genre: genre) { [weak self]  result in
+    func viewAppear(genre: String) {
+        apiClient.fetchRestaurantData(keyword: nil, range: "3", genre: genre) { [weak self]  result in
             guard let self = self else {
                 return
             }
