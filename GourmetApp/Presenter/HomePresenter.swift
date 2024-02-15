@@ -8,27 +8,27 @@
 import Foundation
 
 protocol HomePresenterInput: AnyObject {
-    func fetchRestaurantData(latitude: Double, longitude: Double, keyword: String?, range: String)
+    func fetchRestaurantData(keyword: String?, range: String)
 }
 
 protocol HomePresenterOutput: AnyObject {
     func updateUI(_ restaurantModel: RestaurantDataModel?)
-    func showError(error: Error)
+    func showError(error: APIError)
 }
 
 final class HomePresenter {
     private weak var output: HomePresenterOutput?
-    private var model = HomeModel()
+    private var model = APIClient()
 
-    init(output: HomePresenterOutput, model: HomeModel) {
+    init(output: HomePresenterOutput, model: APIClient) {
         self.output = output
         self.model = model
     }
 }
 
 extension HomePresenter: HomePresenterInput {
-    func fetchRestaurantData(latitude: Double, longitude: Double, keyword: String?, range: String) {
-        model.fetchRestaurantData(latitude: latitude, longitude: longitude, keyword: keyword, range: range) { [weak self]  result in
+    func fetchRestaurantData(keyword: String?, range: String) {
+        model.fetchRestaurantData(keyword: keyword, range: range, genre: nil) { [weak self]  result in
             guard let self = self else {
                 return
             }

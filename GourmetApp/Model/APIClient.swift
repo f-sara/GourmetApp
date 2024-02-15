@@ -1,5 +1,5 @@
 //
-//  APIClient.swift -> HomeModel.swift
+//  APIClient.swift
 //  GourmetApp
 //
 //  Created by 藤井紗良 on 2024/02/05.
@@ -7,10 +7,10 @@
 
 import Foundation
 
-final class HomeModel {
+final class APIClient {
     
-    func fetchRestaurantData(latitude: Double, longitude: Double, keyword: String?, range: String, completion: @escaping (Result<RestaurantDataModel, APIError>) -> Void) {
-        let apiURL = createAPIURL(latitude: latitude, longitude: longitude, keyword: keyword, range: range)
+    func fetchRestaurantData(keyword: String?, range: String, genre: String?, completion: @escaping (Result<RestaurantDataModel, APIError>) -> Void) {
+        let apiURL = createAPIURL(keyword: keyword, range: range, genre: genre)
 
         guard let url = apiURL else {
             completion(.failure(APIError.failCreateURL))
@@ -41,7 +41,7 @@ final class HomeModel {
         }
     }
     
-    private func createAPIURL(latitude: Double, longitude: Double, keyword: String?, range: String) -> URL? {
+    private func createAPIURL(keyword: String?, range: String, genre: String?) -> URL? {
         let baseURL: URL? = URL(string: "https://webservice.recruit.co.jp/hotpepper/gourmet/v1")
         let apiKey = ProcessInfo.processInfo.environment["apiKey"]
         let format = "json"
@@ -49,8 +49,8 @@ final class HomeModel {
         
         var queryItems = [
             URLQueryItem(name: "key", value: apiKey),
-            URLQueryItem(name: "lat", value: latitude.description),
-            URLQueryItem(name: "lng", value: longitude.description),
+            URLQueryItem(name: "lat", value: HomeViewController.latitude.description),
+            URLQueryItem(name: "lng", value: HomeViewController.longitude.description),
             URLQueryItem(name: "format", value: format),
             URLQueryItem(name: "count", value: "20"),
             URLQueryItem(name: "range", value: range),
@@ -59,7 +59,11 @@ final class HomeModel {
         if let keyword {
             queryItems.append(URLQueryItem(name: "keyword", value: keyword))
         }
-        
+
+        if let genre {
+            queryItems.append(URLQueryItem(name: "genre", value: genre))
+        }
+
         urlComponents?.queryItems = queryItems
         
         return urlComponents?.url

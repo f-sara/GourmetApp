@@ -10,8 +10,8 @@ import CoreLocation
 
 final class HomeViewController: UIViewController, UISearchBarDelegate {
     private let locationManager = CLLocationManager()
-    private var latitude: Double = 0.0
-    private var longitude: Double = 0.0
+    static var latitude: Double = 0.0
+    static var longitude: Double = 0.0
 
     private var presenter: HomePresenter!
     private var restaurantData: RestaurantDataModel?
@@ -31,7 +31,7 @@ final class HomeViewController: UIViewController, UISearchBarDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.register(UINib(nibName: "RecommendCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "RecommendCell")
-        presenter = HomePresenter(output: self, model: HomeModel())
+        presenter = HomePresenter(output: self, model: APIClient())
         locationManager.delegate = self
         searchBar.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyKilometer
@@ -67,7 +67,7 @@ final class HomeViewController: UIViewController, UISearchBarDelegate {
         selectedRangeButton.setTitle(selectedRange.range, for: .normal)
         range = selectedRange.rangeValue
         if permissionLocation == true {
-            self.presenter.fetchRestaurantData(latitude: latitude, longitude: longitude, keyword: nil, range: range)
+            self.presenter.fetchRestaurantData(keyword: nil, range: range)
         }
     }
 
@@ -85,15 +85,13 @@ final class HomeViewController: UIViewController, UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         view.endEditing(true)
         if let word = searchBar.text {
-            self.presenter.fetchRestaurantData(latitude: latitude, longitude: longitude, keyword: word, range: range)
+            self.presenter.fetchRestaurantData(keyword: word, range: range)
         }
     }
 
-    private func showAlert(title: String, massage: String, buttonAction: UIAlertAction) {
+    private func showAlert(title: String, massage: String) {
         let alert = UIAlertController(title: title, message: massage, preferredStyle: .alert)
-        let action = buttonAction
         let cancel = UIAlertAction(title: "閉じる", style: .cancel, handler: { (action) -> Void in })
-        alert.addAction(action)
         alert.addAction(cancel)
         self.present(alert, animated: true, completion: nil)
     }
@@ -109,17 +107,19 @@ extension HomeViewController: HomePresenterOutput {
         }
     }
 
-    func showError(error: Error) {
-        print(error)
+    func showError(error: APIError) {
+        Task.detached { @MainActor in
+            self.showAlert(title: error.errorTitle, massage: error.errorMessage)
+        }
     }
 }
 
 extension HomeViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.last {
-            latitude = location.coordinate.latitude
-            longitude = location.coordinate.longitude
-            self.presenter.fetchRestaurantData(latitude: self.latitude, longitude: self.longitude, keyword: nil, range: range)
+            HomeViewController.latitude = location.coordinate.latitude
+            HomeViewController.longitude = location.coordinate.longitude
+            self.presenter.fetchRestaurantData(keyword: nil, range: range)
         }
     }
 
@@ -180,18 +180,6 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
 }
 
 extension HomeViewController: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 10 , left: 2 , bottom: 10 , right: 2 )
-    }
-
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 8
-    }
-
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 8
-    }
-
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let widthSize = (collectionView.bounds.width - 14) / 2
         let heightSize = widthSize * 1.3
