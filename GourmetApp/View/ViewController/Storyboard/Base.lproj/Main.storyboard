@@ -46,11 +46,28 @@
                     <navigationItem key="navigationItem" title="ジャンルから検索" id="9xp-Vi-CGP"/>
                     <connections>
                         <outlet property="collectionView" destination="eZn-YP-D0g" id="MTc-Vn-9Kg"/>
+                        <segue destination="Eh2-It-oCj" kind="show" identifier="showSearchResult" id="9jf-88-GAP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SI3-Oz-0WI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="450.69767441860466" y="-80.472103004291853"/>
+        </scene>
+        <!--Search Result View Controller-->
+        <scene sceneID="sns-rd-Vkz">
+            <objects>
+                <viewController id="Eh2-It-oCj" customClass="SearchResultViewController" customModule="GourmetApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Hu9-vb-6sE">
+                        <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="p0F-Dw-k0F"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="3sV-VH-8Xb"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dlC-ft-t2a" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1349" y="-80"/>
         </scene>
         <!--ホーム-->
         <scene sceneID="enr-4I-cZv">

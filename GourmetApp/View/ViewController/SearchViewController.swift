@@ -11,11 +11,19 @@ class SearchViewController: UIViewController {
 
     @IBOutlet @ViewLoading var collectionView: UICollectionView
 
+    let genre: [String] = ["G004", "G005", "G007", "G013", "G014", "G001"]
+
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.register(UINib(nibName: "GenreCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "GenreCell")
     }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showSearchResult" {
+            let searchResultViewController = segue.destination as! SearchResultViewController
+            searchResultViewController.genre = sender as? String
+        }
+    }
 }
 
 extension SearchViewController: UICollectionViewDataSource, UICollectionViewDelegate {
@@ -29,6 +37,9 @@ extension SearchViewController: UICollectionViewDataSource, UICollectionViewDele
         return cell
     }
 
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: "showSearchResult", sender: genre[indexPath.item])
+    }
 }
 
 extension SearchViewController: UICollectionViewDelegateFlowLayout {
