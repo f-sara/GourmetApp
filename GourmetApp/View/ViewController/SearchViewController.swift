@@ -43,18 +43,9 @@ extension SearchViewController: UICollectionViewDataSource, UICollectionViewDele
 }
 
 extension SearchViewController: UICollectionViewDelegateFlowLayout {
-
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 18
-    }
-
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 20
-    }
-
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let widthSize = (collectionView.bounds.width - 80) / 2
-        let heightSize = widthSize * 1.1
+        let heightSize = (collectionView.bounds.height - 80) / 3
         return CGSize(width: widthSize, height: heightSize)
     }
 }

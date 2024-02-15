@@ -17,35 +17,38 @@
                 <rect key="frame" x="0.0" y="0.0" width="200" height="220"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="V8E-9m-k9t">
-                        <rect key="frame" x="60" y="40" width="80" height="80"/>
-                        <color key="tintColor" systemColor="systemOrangeColor"/>
-                        <constraints>
-                            <constraint firstAttribute="width" secondItem="V8E-9m-k9t" secondAttribute="height" multiplier="1:1" id="MvJ-Ph-08F"/>
-                        </constraints>
-                    </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="和食" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="Byu-Cg-Prr">
-                        <rect key="frame" x="80" y="169" width="40" height="28"/>
-                        <fontDescription key="fontDescription" name="PingFangHK-Regular" family="PingFang HK" pointSize="20"/>
-                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <nil key="highlightedColor"/>
-                    </label>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="UVZ-hz-gQR">
+                        <rect key="frame" x="55" y="51" width="90" height="138"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="V8E-9m-k9t">
+                                <rect key="frame" x="0.0" y="0.0" width="90" height="90"/>
+                                <color key="tintColor" systemColor="systemOrangeColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="V8E-9m-k9t" secondAttribute="height" multiplier="1:1" id="MvJ-Ph-08F"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="和食" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="Byu-Cg-Prr">
+                                <rect key="frame" x="0.0" y="110" width="90" height="28"/>
+                                <fontDescription key="fontDescription" name="PingFangHK-Regular" family="PingFang HK" pointSize="20"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </stackView>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
-                <constraint firstItem="V8E-9m-k9t" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="5iE-xh-SkB"/>
-                <constraint firstItem="V8E-9m-k9t" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="40" id="Eq9-YB-MgR"/>
-                <constraint firstItem="Byu-Cg-Prr" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="UaD-Oa-5NU"/>
-                <constraint firstItem="V8E-9m-k9t" firstAttribute="width" secondItem="gTV-IL-0wX" secondAttribute="width" multiplier="0.4" id="fn9-hv-JwU"/>
-                <constraint firstAttribute="bottom" secondItem="Byu-Cg-Prr" secondAttribute="bottom" constant="23" id="lqc-10-dbu"/>
+                <constraint firstItem="UVZ-hz-gQR" firstAttribute="width" secondItem="gTV-IL-0wX" secondAttribute="width" multiplier="0.45" id="0C9-YL-QxM"/>
+                <constraint firstItem="UVZ-hz-gQR" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="5vx-Dw-L9J"/>
+                <constraint firstItem="UVZ-hz-gQR" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" constant="10" id="lZs-Lo-aGd"/>
             </constraints>
             <size key="customSize" width="152" height="195"/>
             <connections>
                 <outlet property="genreImage" destination="V8E-9m-k9t" id="4Tx-R4-jkj"/>
                 <outlet property="genreLabel" destination="Byu-Cg-Prr" id="sT6-C6-e0t"/>
             </connections>
-            <point key="canvasLocation" x="210.68702290076334" y="71.126760563380287"/>
+            <point key="canvasLocation" x="211" y="51"/>
         </collectionViewCell>
     </objects>
     <resources>
