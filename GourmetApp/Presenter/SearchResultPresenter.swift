@@ -8,7 +8,7 @@
 import Foundation
 
 protocol SearchPresenterInput: AnyObject {
-    func tappedGenre(latitude: Double, longitude: Double, keyword: String)
+    func tappedGenre(latitude: Double, longitude: Double, genre: String)
 }
 
 protocol SearchPresenterOutput: AnyObject {
@@ -16,19 +16,19 @@ protocol SearchPresenterOutput: AnyObject {
     func showError(error: Error)
 }
 
-final class SearchPresenter {
+final class SearchResultPresenter {
     private weak var output: SearchPresenterOutput!
     private var apiClient: APIClient!
 
-    init(output: SearchPresenterOutput!, apiClient: APIClient!, restaurantDataModel: [Shop]) {
+    init(output: SearchPresenterOutput!, apiClient: APIClient!) {
         self.output = output
         self.apiClient = apiClient
     }
 }
 
-extension SearchPresenter: SearchPresenterInput {
-    func tappedGenre(latitude: Double, longitude: Double, keyword: String) {
-        apiClient.fetchRestaurantData(latitude: latitude, longitude: longitude, keyword: keyword, range: "3") { [weak self]  result in
+extension SearchResultPresenter: SearchPresenterInput {
+    func tappedGenre(latitude: Double, longitude: Double, genre: String) {
+        apiClient.fetchRestaurantData(latitude: latitude, longitude: longitude, keyword: nil, range: "3", genre: genre) { [weak self]  result in
             guard let self = self else {
                 return
             }
