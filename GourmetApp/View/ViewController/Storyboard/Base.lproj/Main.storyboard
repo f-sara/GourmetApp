@@ -9,21 +9,48 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--探す-->
+        <!--ジャンルから検索-->
         <scene sceneID="1T4-hr-Dz8">
             <objects>
-                <viewController id="KpI-YH-epu" sceneMemberID="viewController">
+                <viewController id="KpI-YH-epu" customClass="SearchViewController" customModule="GourmetApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="MBW-cN-Gyf">
                         <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" bouncesZoom="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="eZn-YP-D0g">
+                                <rect key="frame" x="0.0" y="103" width="430" height="746"/>
+                                <color key="backgroundColor" systemColor="systemGray6Color"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="0cU-sX-Zfx">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="30" minY="20" maxX="30" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                                <connections>
+                                    <outlet property="dataSource" destination="KpI-YH-epu" id="6aE-Gn-tgg"/>
+                                    <outlet property="delegate" destination="KpI-YH-epu" id="uVG-B7-tRN"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="quw-fH-0LN"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="tableBackgroundColor"/>
+                        <color key="tintColor" systemColor="systemOrangeColor"/>
+                        <constraints>
+                            <constraint firstItem="eZn-YP-D0g" firstAttribute="leading" secondItem="quw-fH-0LN" secondAttribute="leading" id="BAI-1Z-dbE"/>
+                            <constraint firstItem="eZn-YP-D0g" firstAttribute="centerX" secondItem="MBW-cN-Gyf" secondAttribute="centerX" id="fsu-r9-Y9Y"/>
+                            <constraint firstItem="quw-fH-0LN" firstAttribute="bottom" secondItem="eZn-YP-D0g" secondAttribute="bottom" id="mTZ-hn-laD"/>
+                            <constraint firstItem="eZn-YP-D0g" firstAttribute="top" secondItem="quw-fH-0LN" secondAttribute="top" id="tZe-VB-KzC"/>
+                        </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="探す" image="magnifyingglass" catalog="system" id="XFw-Z9-iVH"/>
+                    <navigationItem key="navigationItem" title="ジャンルから検索" id="9xp-Vi-CGP"/>
+                    <connections>
+                        <outlet property="collectionView" destination="eZn-YP-D0g" id="MTc-Vn-9Kg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SI3-Oz-0WI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-447" y="-80"/>
+            <point key="canvasLocation" x="450.69767441860466" y="-80.472103004291853"/>
         </scene>
         <!--ホーム-->
         <scene sceneID="enr-4I-cZv">
@@ -66,7 +93,7 @@
                                 </constraints>
                             </stackView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" minimumZoomScale="0.0" maximumZoomScale="0.0" bouncesZoom="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="pyH-KV-9bS">
-                                <rect key="frame" x="15" y="169.33333333333331" width="400" height="679.66666666666674"/>
+                                <rect key="frame" x="15" y="179.33333333333331" width="400" height="669.66666666666674"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <viewLayoutGuide key="contentLayoutGuide" id="Dby-DN-NEx"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="PzF-9a-mZm"/>
@@ -77,7 +104,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <activityIndicatorView key="backgroundView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="medium" id="6cn-y5-a0g">
-                                    <rect key="frame" x="0.0" y="0.0" width="400" height="679.66666666666674"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="400" height="669.66666666666674"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="color" systemColor="systemOrangeColor"/>
                                 </activityIndicatorView>
@@ -118,7 +145,7 @@
                             <constraint firstItem="oEm-sk-bI3" firstAttribute="trailing" secondItem="fcQ-5O-sbb" secondAttribute="trailing" constant="15" id="JMz-CT-8Ok"/>
                             <constraint firstItem="uI0-OR-7LP" firstAttribute="top" secondItem="nmA-1A-6JH" secondAttribute="bottom" constant="10" id="KtZ-LQ-EhO"/>
                             <constraint firstItem="pyH-KV-9bS" firstAttribute="centerX" secondItem="zhX-8I-zHz" secondAttribute="centerX" id="WoM-3C-8aT"/>
-                            <constraint firstItem="pyH-KV-9bS" firstAttribute="top" secondItem="uI0-OR-7LP" secondAttribute="bottom" constant="10" id="aNE-ST-fFm"/>
+                            <constraint firstItem="pyH-KV-9bS" firstAttribute="top" secondItem="uI0-OR-7LP" secondAttribute="bottom" constant="20" id="aNE-ST-fFm"/>
                             <constraint firstItem="fcQ-5O-sbb" firstAttribute="top" secondItem="xfW-pa-sCC" secondAttribute="bottom" constant="80" id="j4v-kH-zxY"/>
                             <constraint firstItem="oEm-sk-bI3" firstAttribute="bottom" secondItem="pyH-KV-9bS" secondAttribute="bottom" id="k7V-3i-dQP"/>
                             <constraint firstItem="nmA-1A-6JH" firstAttribute="centerX" secondItem="zhX-8I-zHz" secondAttribute="centerX" id="oRB-6O-6f6"/>
@@ -151,7 +178,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EfM-q3-fIl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="133" y="-499"/>
+            <point key="canvasLocation" x="153" y="-763"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="F3o-ug-tsH">
@@ -165,12 +192,31 @@
                     </tabBar>
                     <connections>
                         <segue destination="2OJ-rx-GU8" kind="relationship" relationship="viewControllers" id="YU0-9f-dnO"/>
-                        <segue destination="KpI-YH-epu" kind="relationship" relationship="viewControllers" id="Cae-fX-CQf"/>
+                        <segue destination="Kz3-uH-5MX" kind="relationship" relationship="viewControllers" id="Cae-fX-CQf"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9sQ-q1-Kaz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1352" y="-457"/>
+        </scene>
+        <!--探す-->
+        <scene sceneID="aCG-NG-Nbb">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Kz3-uH-5MX" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="探す" image="magnifyingglass" catalog="system" id="XFw-Z9-iVH"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="drr-SD-hYe">
+                        <rect key="frame" x="0.0" y="59" width="430" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="KpI-YH-epu" kind="relationship" relationship="rootViewController" id="gv2-Hr-JRS"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aBy-FA-du0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-447.90697674418607" y="-80.472103004291853"/>
         </scene>
     </scenes>
     <resources>
@@ -182,8 +228,14 @@
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
+        <systemColor name="systemGray6Color">
+            <color red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemOrangeColor">
             <color red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="tableBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
     </resources>
 </document>
