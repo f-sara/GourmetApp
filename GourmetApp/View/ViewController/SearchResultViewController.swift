@@ -32,7 +32,7 @@ final class SearchResultViewController: UIViewController {
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "showDetail" {
+        if segue.identifier == "showGenreDetail" {
             let restaurantDetailViewController = segue.destination as! RestaurantDetailViewController
             restaurantDetailViewController.restaurantDetail = sender as? Shop
         }

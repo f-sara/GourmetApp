@@ -20,7 +20,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="383.33333333333331"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="17" translatesAutoresizingMaskIntoConstraints="NO" id="tsf-e6-nLe">
-                                <rect key="frame" x="15" y="398.33333333333331" width="363" height="172.33333333333331"/>
+                                <rect key="frame" x="15" y="395.33333333333331" width="363" height="172.33333333333331"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="3YQ-Nh-QZE">
                                         <rect key="frame" x="0.0" y="0.0" width="363" height="89.333333333333329"/>
@@ -80,7 +80,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="QrT-Ut-LEq">
-                                <rect key="frame" x="15" y="595.66666666666663" width="363" height="95"/>
+                                <rect key="frame" x="15" y="592.66666666666663" width="363" height="95"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" alignment="top" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="zfY-QN-NTr" userLabel="Genre Stack View">
                                         <rect key="frame" x="0.0" y="0.0" width="67" height="30"/>
@@ -127,7 +127,7 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CG1-zF-OtC">
-                                <rect key="frame" x="105.66666666666669" y="705.66666666666663" width="182" height="34.333333333333371"/>
+                                <rect key="frame" x="105.66666666666669" y="702.66666666666663" width="182" height="34.333333333333371"/>
                                 <buttonConfiguration key="configuration" style="plain" image="safari" catalog="system" title="Webサイトに移動">
                                     <fontDescription key="titleFontDescription" type="system" pointSize="17"/>
                                 </buttonConfiguration>
@@ -136,21 +136,21 @@
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hotpepper" translatesAutoresizingMaskIntoConstraints="NO" id="GB2-3f-XgS">
-                                <rect key="frame" x="243" y="755" width="135" height="17"/>
+                                <rect key="frame" x="243" y="791" width="135" height="17"/>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="jgS-l7-T5U" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="22R-Fd-zGy"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="GB2-3f-XgS" secondAttribute="bottom" constant="10" id="737-RA-jHY"/>
                             <constraint firstItem="CG1-zF-OtC" firstAttribute="top" secondItem="QrT-Ut-LEq" secondAttribute="bottom" constant="15" id="9Lw-cs-TdR"/>
                             <constraint firstItem="jgS-l7-T5U" firstAttribute="height" secondItem="5EZ-qb-Rvc" secondAttribute="height" multiplier="0.45" id="EY4-a1-yOB"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="tsf-e6-nLe" secondAttribute="trailing" constant="15" id="K7l-7t-xrl"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="GB2-3f-XgS" secondAttribute="trailing" constant="15" id="KsA-N7-CdO"/>
                             <constraint firstItem="tsf-e6-nLe" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="15" id="RDH-bS-JfL"/>
                             <constraint firstItem="QrT-Ut-LEq" firstAttribute="width" secondItem="tsf-e6-nLe" secondAttribute="width" id="ZDT-sD-b0R"/>
-                            <constraint firstItem="GB2-3f-XgS" firstAttribute="top" secondItem="CG1-zF-OtC" secondAttribute="bottom" constant="15" id="gId-xE-yok"/>
-                            <constraint firstItem="tsf-e6-nLe" firstAttribute="top" secondItem="jgS-l7-T5U" secondAttribute="bottom" constant="15" id="iRD-fr-gWx"/>
+                            <constraint firstItem="tsf-e6-nLe" firstAttribute="top" secondItem="jgS-l7-T5U" secondAttribute="bottom" constant="12" id="iRD-fr-gWx"/>
                             <constraint firstItem="QrT-Ut-LEq" firstAttribute="top" secondItem="tsf-e6-nLe" secondAttribute="bottom" constant="25" id="ovl-v3-bta"/>
                             <constraint firstItem="jgS-l7-T5U" firstAttribute="width" secondItem="5EZ-qb-Rvc" secondAttribute="width" id="qTI-KL-ieY"/>
                             <constraint firstItem="QrT-Ut-LEq" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="sgd-kc-HFP"/>

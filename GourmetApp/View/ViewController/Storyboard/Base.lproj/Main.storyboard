@@ -56,23 +56,22 @@
         <!--Search Result View Controller-->
         <scene sceneID="sns-rd-Vkz">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dlC-ft-t2a" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController id="Eh2-It-oCj" customClass="SearchResultViewController" customModule="GourmetApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Hu9-vb-6sE">
                         <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="yex-bG-3RT">
-                                <rect key="frame" x="15" y="148" width="400" height="701"/>
+                                <rect key="frame" x="15" y="103" width="400" height="746"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="3Ya-3L-xIm">
                                     <size key="itemSize" width="128" height="128"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="2" minY="0.0" maxX="2" maxY="0.0"/>
+                                    <inset key="sectionInset" minX="2" minY="40" maxX="2" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <activityIndicatorView key="backgroundView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="medium" id="28w-Cb-wai">
-                                    <rect key="frame" x="0.0" y="0.0" width="400" height="701"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="400" height="746"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="tintColor" systemColor="systemOrangeColor"/>
                                     <color key="color" systemColor="systemOrangeColor"/>
@@ -99,7 +98,7 @@
                             <constraint firstItem="yex-bG-3RT" firstAttribute="leading" secondItem="p0F-Dw-k0F" secondAttribute="leading" constant="15" id="Uxe-C0-rnc"/>
                             <constraint firstItem="Hha-Hm-RF7" firstAttribute="top" secondItem="p0F-Dw-k0F" secondAttribute="top" constant="55" id="cgd-zg-DEB"/>
                             <constraint firstItem="p0F-Dw-k0F" firstAttribute="trailing" secondItem="yex-bG-3RT" secondAttribute="trailing" constant="15" id="gti-Jc-UO1"/>
-                            <constraint firstItem="yex-bG-3RT" firstAttribute="top" secondItem="p0F-Dw-k0F" secondAttribute="top" constant="45" id="xg3-3o-EJU"/>
+                            <constraint firstItem="yex-bG-3RT" firstAttribute="top" secondItem="p0F-Dw-k0F" secondAttribute="top" id="xg3-3o-EJU"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="3sV-VH-8Xb"/>
@@ -107,21 +106,12 @@
                         <outlet property="collectionView" destination="yex-bG-3RT" id="Des-oW-NBF"/>
                         <outlet property="errorMessageLabel" destination="Hha-Hm-RF7" id="HVV-NX-7vN"/>
                         <outlet property="indicatorView" destination="28w-Cb-wai" id="tdH-bt-Uti"/>
-                        <segue destination="Rs1-A2-29W" kind="show" identifier="showGenreDetail" id="gRn-Pu-dmO"/>
+                        <segue destination="T9v-QZ-Vul" kind="presentation" identifier="showGenreDetail" id="AEq-TJ-bvU"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dlC-ft-t2a" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1349" y="-80"/>
-        </scene>
-        <!--RestaurantDetail-->
-        <scene sceneID="6vo-Sf-2rB">
-            <objects>
-                <viewControllerPlaceholder storyboardIdentifier="RestaurantGenreDetail" storyboardName="RestaurantDetail" id="Rs1-A2-29W" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="efb-fP-j9M"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="2nX-Df-nWE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2094" y="-80"/>
         </scene>
         <!--ホーム-->
         <scene sceneID="enr-4I-cZv">
@@ -249,7 +239,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EfM-q3-fIl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="153" y="-763"/>
+            <point key="canvasLocation" x="1907" y="-775"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="F3o-ug-tsH">
@@ -290,6 +280,9 @@
             <point key="canvasLocation" x="-447.90697674418607" y="-80.472103004291853"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="AEq-TJ-bvU"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="house" catalog="system" width="128" height="104"/>
         <image name="magnifyingglass" catalog="system" width="128" height="117"/>
