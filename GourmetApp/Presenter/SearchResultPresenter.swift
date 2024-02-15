@@ -7,27 +7,27 @@
 
 import Foundation
 
-protocol SearchPresenterInput: AnyObject {
-    func tappedGenre(latitude: Double, longitude: Double, genre: String)
+protocol SearchResultPresenterInput: AnyObject {
+    func viewAppear(latitude: Double, longitude: Double, genre: String)
 }
 
-protocol SearchPresenterOutput: AnyObject {
+protocol SearchResultPresenterOutput: AnyObject {
     func showSearchResult(_ data: RestaurantDataModel)
     func showError(error: Error)
 }
 
 final class SearchResultPresenter {
-    private weak var output: SearchPresenterOutput!
+    private weak var output: SearchResultPresenterOutput!
     private var apiClient: APIClient!
 
-    init(output: SearchPresenterOutput!, apiClient: APIClient!) {
+    init(output: SearchResultPresenterOutput!, apiClient: APIClient!) {
         self.output = output
         self.apiClient = apiClient
     }
 }
 
-extension SearchResultPresenter: SearchPresenterInput {
-    func tappedGenre(latitude: Double, longitude: Double, genre: String) {
+extension SearchResultPresenter: SearchResultPresenterInput {
+    func viewAppear(latitude: Double, longitude: Double, genre: String) {
         apiClient.fetchRestaurantData(latitude: latitude, longitude: longitude, keyword: nil, range: "3", genre: genre) { [weak self]  result in
             guard let self = self else {
                 return

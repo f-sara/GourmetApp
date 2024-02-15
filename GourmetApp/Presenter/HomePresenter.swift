@@ -28,7 +28,7 @@ final class HomePresenter {
 
 extension HomePresenter: HomePresenterInput {
     func fetchRestaurantData(latitude: Double, longitude: Double, keyword: String?, range: String) {
-        model.fetchRestaurantData(latitude: latitude, longitude: longitude, keyword: keyword, range: range) { [weak self]  result in
+        model.fetchRestaurantData(latitude: latitude, longitude: longitude, keyword: keyword, range: range, genre: nil) { [weak self]  result in
             guard let self = self else {
                 return
             }
