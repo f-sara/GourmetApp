@@ -1,5 +1,5 @@
 //
-//  APIClient.swift -> HomeModel.swift
+//  APIClient.swift
 //  GourmetApp
 //
 //  Created by 藤井紗良 on 2024/02/05.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class HomeModel {
+final class APIClient {
     
     func fetchRestaurantData(latitude: Double, longitude: Double, keyword: String?, range: String, completion: @escaping (Result<RestaurantDataModel, APIError>) -> Void) {
         let apiURL = createAPIURL(latitude: latitude, longitude: longitude, keyword: keyword, range: range)

@@ -18,9 +18,9 @@ protocol HomePresenterOutput: AnyObject {
 
 final class HomePresenter {
     private weak var output: HomePresenterOutput?
-    private var model = HomeModel()
+    private var model = APIClient()
 
-    init(output: HomePresenterOutput, model: HomeModel) {
+    init(output: HomePresenterOutput, model: APIClient) {
         self.output = output
         self.model = model
     }

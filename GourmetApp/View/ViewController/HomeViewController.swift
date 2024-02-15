@@ -31,7 +31,7 @@ final class HomeViewController: UIViewController, UISearchBarDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.register(UINib(nibName: "RecommendCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "RecommendCell")
-        presenter = HomePresenter(output: self, model: HomeModel())
+        presenter = HomePresenter(output: self, model: APIClient())
         locationManager.delegate = self
         searchBar.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyKilometer
