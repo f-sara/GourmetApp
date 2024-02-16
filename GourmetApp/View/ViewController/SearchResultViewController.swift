@@ -29,7 +29,7 @@ final class SearchResultViewController: UIViewController {
     @IBOutlet @ViewLoading var errorMessageLabel: UILabel
     @IBOutlet @ViewLoading var indicatorView: UIActivityIndicatorView
     @IBOutlet @ViewLoading var collectionView: UICollectionView
-    @IBOutlet @ViewLoading var selectedRangeButton: UIButton
+    @IBOutlet @ViewLoading var rangeSelectionButton: UIButton
 
 
     // MARK: View Life-Cycle Methods
@@ -59,9 +59,9 @@ final class SearchResultViewController: UIViewController {
                         self.configureRange()
                     })
             }
-        selectedRangeButton.menu = UIMenu(title: "", options: .displayInline, children: actions)
-        selectedRangeButton.showsMenuAsPrimaryAction = true
-        selectedRangeButton.setTitle(selectedRange.range, for: .normal)
+        rangeSelectionButton.menu = UIMenu(title: "", options: .displayInline, children: actions)
+        rangeSelectionButton.showsMenuAsPrimaryAction = true
+        rangeSelectionButton.setTitle(selectedRange.range, for: .normal)
         range = selectedRange.rangeValue
         if let genre { self.presenter.selectedRange(genre: genre,range: range) }
     }

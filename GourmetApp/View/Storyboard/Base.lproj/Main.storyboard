@@ -130,7 +130,7 @@
                         <outlet property="collectionView" destination="yex-bG-3RT" id="Des-oW-NBF"/>
                         <outlet property="errorMessageLabel" destination="Hha-Hm-RF7" id="HVV-NX-7vN"/>
                         <outlet property="indicatorView" destination="28w-Cb-wai" id="tdH-bt-Uti"/>
-                        <outlet property="selectedRangeButton" destination="NGE-mT-5fD" id="hIF-zF-4FF"/>
+                        <outlet property="rangeSelectionButton" destination="NGE-mT-5fD" id="wKw-zD-vRt"/>
                         <segue destination="T9v-QZ-Vul" kind="presentation" identifier="showGenreDetail" id="AEq-TJ-bvU"/>
                     </connections>
                 </viewController>
@@ -250,8 +250,8 @@
                         <outlet property="errorMessageLabel" destination="jrb-LS-O2x" id="h6g-Ra-blD"/>
                         <outlet property="indicatorView" destination="6cn-y5-a0g" id="FpA-ua-HYu"/>
                         <outlet property="openSettingButton" destination="I2h-l8-bec" id="k3N-57-sAV"/>
+                        <outlet property="rangeSelectedButton" destination="bvG-R2-itb" id="Juj-Uf-V1M"/>
                         <outlet property="searchBar" destination="nmA-1A-6JH" id="vFC-4y-WAd"/>
-                        <outlet property="selectedRangeButton" destination="bvG-R2-itb" id="kyS-ih-Dts"/>
                         <segue destination="T9v-QZ-Vul" kind="presentation" identifier="showDetail" id="768-yA-zDY"/>
                     </connections>
                 </viewController>
@@ -308,7 +308,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="AEq-TJ-bvU"/>
+        <segue reference="768-yA-zDY"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="house" catalog="system" width="128" height="104"/>
