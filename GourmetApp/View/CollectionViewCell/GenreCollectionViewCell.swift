@@ -12,7 +12,7 @@ class GenreCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var genreImage: UIImageView!
     @IBOutlet weak var genreLabel: UILabel!
 
-    private let genreImages = [UIImage(named: "japaneseFood"), UIImage(named: "westernFood"), UIImage(named: "ChineseFood"), UIImage(named: "ramen"), UIImage(named: "cafe"), UIImage(named: "izakaya")]
+    private let genreImages = [UIImage(named: "japaneseFood"), UIImage(named: "westernFood"), UIImage(named: "chineseFood"), UIImage(named: "ramen"), UIImage(named: "cafe"), UIImage(named: "izakaya")]
     private let genreName =  ["和食", "洋食", "中華", "ラーメン", "カフェ", "居酒屋"]
 
     override func awakeFromNib() {
