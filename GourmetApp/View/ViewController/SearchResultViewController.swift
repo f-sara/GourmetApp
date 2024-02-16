@@ -7,25 +7,45 @@
 
 import UIKit
 
+// MARK: - SearchResultViewController
+
 final class SearchResultViewController: UIViewController {
 
+
+    // MARK: Internal Properties
+
     var genre: String?
+
+
+    // MARK: Private Properties
+
     private var restaurantData: RestaurantDataModel?
     private var presenter: SearchResultPresenter!
+
+
+    // MARK: IBOutlets
 
     @IBOutlet @ViewLoading var errorMessageLabel: UILabel
     @IBOutlet @ViewLoading var indicatorView: UIActivityIndicatorView
     @IBOutlet @ViewLoading var collectionView: UICollectionView
 
+
+    // MARK: View Life-Cycle Methods
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        setUp()
+    }
+
+    private func setUp() {
         self.presenter = SearchResultPresenter(output: self, apiClient: APIClient())
         collectionView.register(UINib(nibName: "RecommendCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "RecommendCell")
-        if let genre {
-            presenter.viewAppear(genre: genre)
-        }
+        if let genre { presenter.viewAppear(genre: genre) }
         errorMessageLabel.isHidden = true
     }
+
+
+    // MARK: Other Methods
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showGenreDetail" {
@@ -34,6 +54,12 @@ final class SearchResultViewController: UIViewController {
         }
     }
 }
+
+
+// MARK: - Extensions
+
+
+// MARK: UICollectionViewDelegate, UICollectionViewDataSource
 
 extension SearchResultViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -71,16 +97,10 @@ extension SearchResultViewController: UICollectionViewDelegate, UICollectionView
 
 }
 
+
+// MARK: UICollectionViewDelegateFlowLayout
+
 extension SearchResultViewController: UICollectionViewDelegateFlowLayout {
-
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 8
-    }
-
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 8
-    }
-
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let widthSize = (collectionView.bounds.width - 14) / 2
         let heightSize = widthSize * 1.3
@@ -88,6 +108,8 @@ extension SearchResultViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
+
+// MARK: SearchResultPresenterOutput
 
 extension SearchResultViewController: SearchResultPresenterOutput {
     func showSearchResult(_ data: RestaurantDataModel) {

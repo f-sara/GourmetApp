@@ -8,16 +8,29 @@
 import UIKit
 import CoreLocation
 
+// MARK: - HomeViewController
+
 final class HomeViewController: UIViewController, UISearchBarDelegate {
-    private let locationManager = CLLocationManager()
+
+
+    // MARK: Static Properties
+
     static var latitude: Double = 0.0
     static var longitude: Double = 0.0
 
+
+    // MARK: Private Properties
+
+    private let locationManager = CLLocationManager()
     private var presenter: HomePresenter!
     private var restaurantData: RestaurantDataModel?
     private var restaurantImage: [UIImage] = []
     private var range: String = "1"
     private var permissionLocation: Bool = false
+    private var selectedRange = MenuRangeType.range1
+
+
+    // MARK: IBOutlets
 
     @IBOutlet @ViewLoading var searchBar: UISearchBar
     @IBOutlet @ViewLoading var indicatorView: UIActivityIndicatorView
@@ -26,10 +39,15 @@ final class HomeViewController: UIViewController, UISearchBarDelegate {
     @IBOutlet @ViewLoading var errorMessageLabel: UILabel
     @IBOutlet @ViewLoading var openSettingButton: UIButton
 
-    private var selectedRange = MenuRangeType.range1
+
+    // MARK: View Life-Cycle Methods
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setUp()
+    }
+
+    private func setUp() {
         collectionView.register(UINib(nibName: "RecommendCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "RecommendCell")
         presenter = HomePresenter(output: self, model: APIClient())
         locationManager.delegate = self
@@ -40,15 +58,6 @@ final class HomeViewController: UIViewController, UISearchBarDelegate {
         configureRange()
         errorMessageLabel.isHidden = true
         openSettingButton.isHidden = true
-    }
-
-    @IBAction func openSetting() {
-        let settingsURL = URL(string: UIApplication.openSettingsURLString)!
-        UIApplication.shared.open(settingsURL)
-    }
-
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.view.endEditing(true)
     }
 
     private func configureRange() {
@@ -71,16 +80,16 @@ final class HomeViewController: UIViewController, UISearchBarDelegate {
         }
     }
 
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "showDetail" {
-            let restaurantDetailViewController = segue.destination as! RestaurantDetailViewController
-            restaurantDetailViewController.restaurantDetail = sender as? Shop
-        }
+
+    // MARK: IBActions
+
+    @IBAction func openSetting() {
+        let settingsURL = URL(string: UIApplication.openSettingsURLString)!
+        UIApplication.shared.open(settingsURL)
     }
 
-    private func searchBarClose(_ searchBar: UISearchBar) {
-        searchBar.resignFirstResponder()
-    }
+
+    // MARK: Internal Methods
 
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         view.endEditing(true)
@@ -88,52 +97,35 @@ final class HomeViewController: UIViewController, UISearchBarDelegate {
             self.presenter.confirmSearchBar(keyword: word, range: range)
         }
     }
+
+
+    // MARK: Private Methods
+
+    private func searchBarClose(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+    }
+
+
+    // MARK: Other Methods
+
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showDetail" {
+            let restaurantDetailViewController = segue.destination as! RestaurantDetailViewController
+            restaurantDetailViewController.restaurantDetail = sender as? Shop
+        }
+    }
+
 }
 
-extension HomeViewController: HomePresenterOutput {
-    func updateUI(_ restaurantModel: RestaurantDataModel?) {
-        self.restaurantData = restaurantModel
-        self.restaurantImage = []
-        Task {
-            self.collectionView.reloadData()
-        }
-    }
 
-    func showError(error: APIError) {
-        Task {
-            ShowAlert.showAlert(title: error.errorTitle, massage: error.errorMessage, viewController: self)
-        }
-    }
-}
+// MARK: - Extensions
 
-extension HomeViewController: CLLocationManagerDelegate {
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        if let location = locations.last {
-            HomeViewController.latitude = location.coordinate.latitude
-            HomeViewController.longitude = location.coordinate.longitude
-            self.presenter.appearedView(range: range)
-        }
-    }
 
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print("error: \(error)")
-    }
-
-    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        switch status {
-        case .authorizedWhenInUse:
-            self.locationManager.requestLocation()
-            permissionLocation = true
-            errorMessageLabel.isHidden = true
-            openSettingButton.isHidden = true
-        default:
-            errorMessageLabel.text = "位置情報の利用が許可されていません"
-            indicatorView.stopAnimating()
-            errorMessageLabel.isHidden = false
-            openSettingButton.isHidden = false
-        }
-    }
-}
+// MARK: UICollectionViewDelegate, UICollectionViewDataSource
 
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -171,10 +163,64 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
 
 }
 
+
+// MARK: UICollectionViewDelegateFlowLayout
+
 extension HomeViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let widthSize = (collectionView.bounds.width - 14) / 2
         let heightSize = widthSize * 1.3
         return CGSize(width: widthSize, height: heightSize)
+    }
+}
+
+
+// MARK: CLLocationManagerDelegate
+
+extension HomeViewController: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let location = locations.last {
+            HomeViewController.latitude = location.coordinate.latitude
+            HomeViewController.longitude = location.coordinate.longitude
+            self.presenter.appearedView(range: range)
+        }
+    }
+
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print("error: \(error)")
+    }
+
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        switch status {
+        case .authorizedWhenInUse:
+            self.locationManager.requestLocation()
+            permissionLocation = true
+            errorMessageLabel.isHidden = true
+            openSettingButton.isHidden = true
+        default:
+            errorMessageLabel.text = "位置情報の利用が許可されていません"
+            indicatorView.stopAnimating()
+            errorMessageLabel.isHidden = false
+            openSettingButton.isHidden = false
+        }
+    }
+}
+
+
+// MARK: HomePresenterOutput
+
+extension HomeViewController: HomePresenterOutput {
+    func updateUI(_ restaurantModel: RestaurantDataModel?) {
+        self.restaurantData = restaurantModel
+        self.restaurantImage = []
+        Task {
+            self.collectionView.reloadData()
+        }
+    }
+
+    func showError(error: APIError) {
+        Task {
+            ShowAlert.showAlert(title: error.errorTitle, massage: error.errorMessage, viewController: self)
+        }
     }
 }

@@ -27,19 +27,6 @@ class RecommendCollectionViewCell: UICollectionViewCell {
         setUpShadow()
     }
 
-
-    // MARK: Internal Methods
-
-    func setUpUI(restaurantData: Shop) {
-        nameLabel.text = restaurantData.name
-        nearStationLabel.text = "\(restaurantData.stationName)駅"
-        genreLabel.text = restaurantData.genre.name
-        ShowImage.showImage(imageUrl: restaurantData.photo.mobile.l, imageView: shopImage)
-    }
-
-
-    // MARK: Private Methods
-
     private func setUpShadow() {
         clipsToBounds = false
         backgroundColor = .white
@@ -48,5 +35,15 @@ class RecommendCollectionViewCell: UICollectionViewCell {
         layer.shadowOpacity = 0.8
         layer.shadowRadius = 1.0
         layer.shadowOffset = CGSize(width: 0.0, height: 1.0)
+    }
+
+
+    // MARK: Internal Methods
+
+    func setUpUI(restaurantData: Shop) {
+        nameLabel.text = restaurantData.name
+        nearStationLabel.text = "\(restaurantData.stationName)駅"
+        genreLabel.text = restaurantData.genre.name
+        ShowImage.showImage(imageUrl: restaurantData.photo.mobile.l, imageView: shopImage)
     }
 }

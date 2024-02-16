@@ -52,7 +52,10 @@ final class SearchResultPresenter {
 }
 
 
-// MARK: - Extensions SearchResultPresenterInput
+// MARK: - Extensions
+
+
+// MARK: SearchResultPresenterInput
 
 extension SearchResultPresenter: SearchResultPresenterInput {
 

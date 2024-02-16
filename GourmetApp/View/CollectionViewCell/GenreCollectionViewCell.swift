@@ -38,17 +38,6 @@ class GenreCollectionViewCell: UICollectionViewCell {
         setUpShadow()
     }
 
-
-    // MARK: Internal Methods
-
-    func setup(index: Int) {
-        genreImage.image = genreImages[index]
-        genreLabel.text = genreName[index]
-    }
-
-
-    // MARK: Private Methods
-
     private func setUpShadow() {
         clipsToBounds = false
         backgroundColor = .white
@@ -57,5 +46,13 @@ class GenreCollectionViewCell: UICollectionViewCell {
         layer.shadowOpacity = 0.8
         layer.shadowRadius = 1.0
         layer.shadowOffset = CGSize(width: 0.0, height: 1.0)
+    }
+
+
+    // MARK: Internal Methods
+
+    func setup(index: Int) {
+        genreImage.image = genreImages[index]
+        genreLabel.text = genreName[index]
     }
 }

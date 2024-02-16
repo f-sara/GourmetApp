@@ -53,7 +53,10 @@ final class HomePresenter {
 }
 
 
-// MARK: - Extensions HomePresenterInput
+// MARK: - Extensions 
+
+
+// MARK: HomePresenterInput
 
 extension HomePresenter: HomePresenterInput {
     func appearedView(range: String) {

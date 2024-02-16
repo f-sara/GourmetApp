@@ -41,7 +41,10 @@ class SearchViewController: UIViewController {
 }
 
 
-// MARK: - Extensions UICollectionViewDataSource, UICollectionViewDelegate
+// MARK: - Extensions 
+
+
+// MARK: UICollectionViewDataSource, UICollectionViewDelegate
 
 extension SearchViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -60,7 +63,7 @@ extension SearchViewController: UICollectionViewDataSource, UICollectionViewDele
 }
 
 
-// MARK: - Extensions UICollectionViewDelegateFlowLayout
+// MARK: UICollectionViewDelegateFlowLayout
 
 extension SearchViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
