@@ -13,7 +13,7 @@ protocol SearchResultPresenterInput: AnyObject {
 
 protocol SearchResultPresenterOutput: AnyObject {
     func showSearchResult(_ data: RestaurantDataModel)
-    func showError(error: Error)
+    func showError(error: APIError)
 }
 
 final class SearchResultPresenter {

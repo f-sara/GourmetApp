@@ -97,9 +97,9 @@ extension SearchResultViewController: SearchResultPresenterOutput {
         }
     }
 
-    func showError(error: Error) {
-        //
+    func showError(error: APIError) {
+        Task {
+            ShowAlert.showAlert(title: error.errorTitle, massage: error.errorMessage, viewController: self)
+        }
     }
-
-
 }

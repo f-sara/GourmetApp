@@ -88,14 +88,6 @@ final class HomeViewController: UIViewController, UISearchBarDelegate {
             self.presenter.confirmSearchBar(keyword: word, range: range)
         }
     }
-
-    private func showAlert(title: String, massage: String) {
-        let alert = UIAlertController(title: title, message: massage, preferredStyle: .alert)
-        let cancel = UIAlertAction(title: "閉じる", style: .cancel, handler: { (action) -> Void in })
-        alert.addAction(cancel)
-        self.present(alert, animated: true, completion: nil)
-    }
-
 }
 
 extension HomeViewController: HomePresenterOutput {
@@ -108,8 +100,8 @@ extension HomeViewController: HomePresenterOutput {
     }
 
     func showError(error: APIError) {
-        Task.detached { @MainActor in
-            self.showAlert(title: error.errorTitle, massage: error.errorMessage)
+        Task {
+            ShowAlert.showAlert(title: error.errorTitle, massage: error.errorMessage, viewController: self)
         }
     }
 }
