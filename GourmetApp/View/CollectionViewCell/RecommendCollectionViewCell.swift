@@ -7,16 +7,27 @@
 
 import UIKit
 
+// MARK: - RecommendCollectionViewCell
+
 class RecommendCollectionViewCell: UICollectionViewCell {
 
+
+    // MARK: IBOutlets
 
     @IBOutlet weak var shopImage: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var nearStationLabel: UILabel!
     @IBOutlet weak var genreLabel: UILabel!
     
+
+    // MARK: View Life-Cycle Methods
+
     override func awakeFromNib() {
         super.awakeFromNib()
+        setUpShadow()
+    }
+
+    private func setUpShadow() {
         clipsToBounds = false
         backgroundColor = .white
         layer.cornerRadius = 5.0
@@ -26,34 +37,13 @@ class RecommendCollectionViewCell: UICollectionViewCell {
         layer.shadowOffset = CGSize(width: 0.0, height: 1.0)
     }
 
-    func setUp(restaurantData: Shop) {
+
+    // MARK: Internal Methods
+
+    func setUpUI(restaurantData: Shop, viewController: UIViewController) {
         nameLabel.text = restaurantData.name
         nearStationLabel.text = "\(restaurantData.stationName)駅"
         genreLabel.text = restaurantData.genre.name
-        showImage(imageUrl: restaurantData.photo.mobile.l)
+        ShowImage.showImage(imageUrl: restaurantData.photo.mobile.l, imageView: shopImage, viewController: viewController)
     }
-
-
-    private func showImage(imageUrl: String) {
-        guard let url = URL(string: imageUrl) else {
-            return
-        }
-
-        URLSession.shared.dataTask(with: url) { [weak self] data, _, error in
-            if let error = error {
-                print(error)
-                return
-            }
-
-            if let data = data,
-               let image = UIImage(data: data){
-                DispatchQueue.main.async {
-                    self?.shopImage.image = image
-                }
-            } else {
-                print("画像表示エラー")
-            }
-        }.resume()
-    }
-
 }

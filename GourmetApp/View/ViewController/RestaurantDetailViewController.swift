@@ -5,12 +5,19 @@
 //  Created by 藤井紗良 on 2024/02/09.
 //
 
-import Foundation
 import UIKit
+
+// MARK: - RestaurantDetailViewController
 
 final class RestaurantDetailViewController: UIViewController {
 
+
+    // MARK: Properties
+
     var restaurantDetail: Shop?
+
+
+    // MARK: IBOutlets
 
     @IBOutlet @ViewLoading var shopNameLabel: UILabel
     @IBOutlet @ViewLoading var addressLabel: UILabel
@@ -20,18 +27,16 @@ final class RestaurantDetailViewController: UIViewController {
     @IBOutlet @ViewLoading var genreLabel: UILabel
     @IBOutlet @ViewLoading var openLabel: UILabel
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        if let restaurantDetailInfo = restaurantDetail {
-            shopNameLabel.text = restaurantDetailInfo.name
-            addressLabel.text = restaurantDetailInfo.address
-            catchLabel.text = restaurantDetailInfo.genre.genreCatch
-            subCatchLabel.text = restaurantDetailInfo.shopCatch
-            genreLabel.text = restaurantDetailInfo.genre.name
-            openLabel.text = restaurantDetailInfo.open
-            showImage(imageUrl: restaurantDetailInfo.photo.mobile.l)
+
+    // MARK: View Life-Cycle Methods
+
+        override func viewDidLoad() {
+            super.viewDidLoad()
+            setUpUI(viewController: self)
         }
-    }
+
+
+    // MARK: IBActions
 
     @IBAction func openWebSite(_ sender: UIButton) {
         if let restaurantURL = restaurantDetail?.urls.pc {
@@ -40,26 +45,18 @@ final class RestaurantDetailViewController: UIViewController {
         }
     }
 
-    private func showImage(imageUrl: String) {
-        guard let url = URL(string: imageUrl) else {
-            return
+
+    // MARK: Private Methods
+
+    private func setUpUI(viewController: UIViewController) {
+        if let data = restaurantDetail {
+            shopNameLabel.text = data.name
+            addressLabel.text = data.address
+            catchLabel.text = data.genre.genreCatch
+            subCatchLabel.text = data.shopCatch
+            genreLabel.text = data.genre.name
+            openLabel.text = data.open
+            ShowImage.showImage(imageUrl: data.photo.mobile.l, imageView: shopImage, viewController: viewController)
         }
-
-        URLSession.shared.dataTask(with: url) { [weak self] data, _, error in
-            if let error = error {
-                print(error)
-                return
-            }
-
-            if let data = data,
-               let image = UIImage(data: data){
-                DispatchQueue.main.async {
-                    self?.shopImage.image = image
-                }
-            } else {
-                print("画像表示エラー")
-            }
-        }.resume()
     }
-
 }

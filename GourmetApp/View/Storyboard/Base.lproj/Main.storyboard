@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--ジャンルで検索-->
+        <!--ジャンルから検索-->
         <scene sceneID="1T4-hr-Dz8">
             <objects>
                 <viewController id="KpI-YH-epu" customClass="SearchViewController" customModule="GourmetApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -43,7 +43,7 @@
                             <constraint firstItem="eZn-YP-D0g" firstAttribute="top" secondItem="quw-fH-0LN" secondAttribute="top" constant="5" id="tZe-VB-KzC"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="ジャンルで検索" id="9xp-Vi-CGP"/>
+                    <navigationItem key="navigationItem" title="ジャンルから検索" id="9xp-Vi-CGP"/>
                     <connections>
                         <outlet property="collectionView" destination="eZn-YP-D0g" id="MTc-Vn-9Kg"/>
                         <segue destination="Eh2-It-oCj" kind="show" identifier="showSearchResult" id="9jf-88-GAP"/>

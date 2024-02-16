@@ -5,6 +5,8 @@
 //  Created by 藤井紗良 on 2024/02/08.
 //
 
+// MARK: - APIError
+
 enum APIError: Error {
     case failCreateURL
     case sessionError
@@ -39,6 +41,23 @@ enum APIError: Error {
 
 }
 
+
+// MARK: - DataError
+
 enum DataError: Error {
     case imageError
+
+    var errorTitle: String {
+        switch self {
+        case .imageError:
+            "画像取得エラー"
+        }
+    }
+
+    var errorMessage: String {
+        switch self {
+        case .imageError:
+            "画像の取得に失敗しました"
+        }
+    }
 }

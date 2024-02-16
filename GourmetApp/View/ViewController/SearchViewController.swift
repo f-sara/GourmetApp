@@ -7,16 +7,30 @@
 
 import UIKit
 
+// MARK: - SearchViewController
+
 class SearchViewController: UIViewController {
+
+
+    // MARK: Private Properties
+
+    private let genre: [String] = ["G004", "G005", "G007", "G013", "G014", "G001"]
+
+
+    // MARK: IBOutlets
 
     @IBOutlet @ViewLoading var collectionView: UICollectionView
 
-    let genre: [String] = ["G004", "G005", "G007", "G013", "G014", "G001"]
+
+    // MARK: View Life-Cycle Methods
 
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.register(UINib(nibName: "GenreCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "GenreCell")
     }
+
+
+    // MARK: Other Methods
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showSearchResult" {
@@ -25,6 +39,12 @@ class SearchViewController: UIViewController {
         }
     }
 }
+
+
+// MARK: - Extensions 
+
+
+// MARK: UICollectionViewDataSource, UICollectionViewDelegate
 
 extension SearchViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -41,6 +61,9 @@ extension SearchViewController: UICollectionViewDataSource, UICollectionViewDele
         self.performSegue(withIdentifier: "showSearchResult", sender: genre[indexPath.item])
     }
 }
+
+
+// MARK: UICollectionViewDelegateFlowLayout
 
 extension SearchViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
