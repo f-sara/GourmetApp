@@ -67,7 +67,7 @@ final class HomeViewController: UIViewController, UISearchBarDelegate {
         selectedRangeButton.setTitle(selectedRange.range, for: .normal)
         range = selectedRange.rangeValue
         if permissionLocation == true {
-            self.presenter.fetchRestaurantData(keyword: nil, range: range)
+            self.presenter.appearedView(range: range)
         }
     }
 
@@ -85,7 +85,7 @@ final class HomeViewController: UIViewController, UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         view.endEditing(true)
         if let word = searchBar.text {
-            self.presenter.fetchRestaurantData(keyword: word, range: range)
+            self.presenter.confirmSearchBar(keyword: word, range: range)
         }
     }
 
@@ -119,7 +119,7 @@ extension HomeViewController: CLLocationManagerDelegate {
         if let location = locations.last {
             HomeViewController.latitude = location.coordinate.latitude
             HomeViewController.longitude = location.coordinate.longitude
-            self.presenter.fetchRestaurantData(keyword: nil, range: range)
+            self.presenter.appearedView(range: range)
         }
     }
 
