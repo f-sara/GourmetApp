@@ -5,11 +5,16 @@
 //  Created by 藤井紗良 on 2024/02/16.
 //
 
-import Foundation
 import UIKit
+
+// MARK: - ShowImage
 
 final class ShowImage {
 
+
+    // MARK: Static Methods
+
+    /// String型の画像URLを変換し、UIImageViewに表示する
     static func showImage(imageUrl: String, imageView: UIImageView) {
         guard let url = URL(string: imageUrl) else {
             return

@@ -12,12 +12,12 @@ import UIKit
 final class RestaurantDetailViewController: UIViewController {
 
 
-// MARK: Properties
+    // MARK: Properties
 
     var restaurantDetail: Shop?
 
 
-// MARK: IBOutlets
+    // MARK: IBOutlets
 
     @IBOutlet @ViewLoading var shopNameLabel: UILabel
     @IBOutlet @ViewLoading var addressLabel: UILabel
@@ -28,7 +28,7 @@ final class RestaurantDetailViewController: UIViewController {
     @IBOutlet @ViewLoading var openLabel: UILabel
 
 
-// MARK: View Life-Cycle Methods
+    // MARK: View Life-Cycle Methods
 
         override func viewDidLoad() {
             super.viewDidLoad()
@@ -36,7 +36,7 @@ final class RestaurantDetailViewController: UIViewController {
         }
 
 
-// MARK: IBActions
+    // MARK: IBActions
 
     @IBAction func openWebSite(_ sender: UIButton) {
         if let restaurantURL = restaurantDetail?.urls.pc {
@@ -46,7 +46,7 @@ final class RestaurantDetailViewController: UIViewController {
     }
 
 
-// MARK: Private Methods
+    // MARK: Private Methods
 
     private func setUpUI() {
         if let data = restaurantDetail {
