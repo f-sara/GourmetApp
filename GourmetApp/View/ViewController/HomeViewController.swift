@@ -34,7 +34,7 @@ final class HomeViewController: UIViewController, UISearchBarDelegate {
     @IBOutlet @ViewLoading var searchBar: UISearchBar
     @IBOutlet @ViewLoading var indicatorView: UIActivityIndicatorView
     @IBOutlet @ViewLoading var collectionView: UICollectionView
-    @IBOutlet @ViewLoading var selectedRangeButton: UIButton
+    @IBOutlet @ViewLoading var rangeSelectedButton: UIButton
     @IBOutlet @ViewLoading var errorMessageLabel: UILabel
     @IBOutlet @ViewLoading var openSettingButton: UIButton
 
@@ -70,9 +70,9 @@ final class HomeViewController: UIViewController, UISearchBarDelegate {
                         self.configureRange()
                     })
             }
-        selectedRangeButton.menu = UIMenu(title: "", options: .displayInline, children: actions)
-        selectedRangeButton.showsMenuAsPrimaryAction = true
-        selectedRangeButton.setTitle(selectedRange.range, for: .normal)
+        rangeSelectedButton.menu = UIMenu(title: "", options: .displayInline, children: actions)
+        rangeSelectedButton.showsMenuAsPrimaryAction = true
+        rangeSelectedButton.setTitle(selectedRange.range, for: .normal)
         range = selectedRange.rangeValue
         if permissionLocation == true {
             self.presenter.selectedRange(range: range)
@@ -218,7 +218,7 @@ extension HomeViewController: HomePresenterOutput {
         }
     }
 
-    func showError(error: APIError) {
+    func showError(_ error: APIError) {
         Task {
             ShowAlert.showAlert(title: error.errorTitle, massage: error.errorMessage, viewController: self)
         }

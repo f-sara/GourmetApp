@@ -141,7 +141,7 @@ extension SearchResultViewController: SearchResultPresenterOutput {
         }
     }
 
-    func showError(error: APIError) {
+    func showError(_ error: APIError) {
         Task {
             ShowAlert.showAlert(title: error.errorTitle, massage: error.errorMessage, viewController: self)
         }

@@ -14,7 +14,7 @@ protocol SearchResultPresenterInput: AnyObject {
 
 protocol SearchResultPresenterOutput: AnyObject {
     func showSearchResult(_ data: RestaurantDataModel)
-    func showError(error: APIError)
+    func showError(_ error: APIError)
 }
 
 
@@ -39,14 +39,14 @@ final class SearchResultPresenter {
 
     // MARK: Private Methods
 
-    private func fetchRestaurantData(genre: String?, range: String) {
+    private func fetchRestaurantData(genre: String, range: String) {
         apiClient.fetchRestaurantData(keyword: nil, range: range, genre: genre) { [weak self]  result in
             guard let self = self else { return }
             switch result {
             case .success(let restaurantData):
                 self.output?.showSearchResult(restaurantData)
             case .failure(let error):
-                self.output?.showError(error: error)
+                self.output?.showError(error)
             }
         }
     }
