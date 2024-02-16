@@ -125,7 +125,9 @@
 			isa = PBXGroup;
 			children = (
 				8B8F027A2B7064500066A4C5 /* ViewController */,
+				8B8F02792B7064360066A4C5 /* Storyboard */,
 				8B8F02802B7073ED0066A4C5 /* CollectionViewCell */,
+				8B8271C92B7EE55600D68B6E /* Logic */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -146,8 +148,6 @@
 				8BCCA6FF2B7B732D008EB872 /* SearchViewController.swift */,
 				8B8271C52B7E177500D68B6E /* SearchResultViewController.swift */,
 				8B570D462B75F60C00560FB7 /* RestaurantDetailViewController.swift */,
-				8B8271C92B7EE55600D68B6E /* Logic */,
-				8B8F02792B7064360066A4C5 /* Storyboard */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
