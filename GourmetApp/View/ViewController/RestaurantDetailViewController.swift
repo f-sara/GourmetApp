@@ -8,9 +8,17 @@
 import Foundation
 import UIKit
 
+// MARK: - RestaurantDetailViewController
+
 final class RestaurantDetailViewController: UIViewController {
 
+
+// MARK: Properties
+
     var restaurantDetail: Shop?
+
+
+// MARK: IBOutlets
 
     @IBOutlet @ViewLoading var shopNameLabel: UILabel
     @IBOutlet @ViewLoading var addressLabel: UILabel
@@ -20,23 +28,36 @@ final class RestaurantDetailViewController: UIViewController {
     @IBOutlet @ViewLoading var genreLabel: UILabel
     @IBOutlet @ViewLoading var openLabel: UILabel
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        if let restaurantDetailInfo = restaurantDetail {
-            shopNameLabel.text = restaurantDetailInfo.name
-            addressLabel.text = restaurantDetailInfo.address
-            catchLabel.text = restaurantDetailInfo.genre.genreCatch
-            subCatchLabel.text = restaurantDetailInfo.shopCatch
-            genreLabel.text = restaurantDetailInfo.genre.name
-            openLabel.text = restaurantDetailInfo.open
-            showImage(imageUrl: restaurantDetailInfo.photo.mobile.l)
+
+// MARK: View Life-Cycle Methods
+
+        override func viewDidLoad() {
+            super.viewDidLoad()
+            setUpUI()
         }
-    }
+
+
+// MARK: IBActions
 
     @IBAction func openWebSite(_ sender: UIButton) {
         if let restaurantURL = restaurantDetail?.urls.pc {
             guard let url = URL(string: restaurantURL) else {return}
             UIApplication.shared.open(url)
+        }
+    }
+
+
+// MARK: Private Methods
+
+    private func setUpUI() {
+        if let data = restaurantDetail {
+            shopNameLabel.text = data.name
+            addressLabel.text = data.address
+            catchLabel.text = data.genre.genreCatch
+            subCatchLabel.text = data.shopCatch
+            genreLabel.text = data.genre.name
+            openLabel.text = data.open
+            showImage(imageUrl: data.photo.mobile.l)
         }
     }
 
