@@ -32,7 +32,7 @@ final class RestaurantDetailViewController: UIViewController {
 
         override func viewDidLoad() {
             super.viewDidLoad()
-            setUpUI()
+            setUpUI(viewController: self)
         }
 
 
@@ -48,7 +48,7 @@ final class RestaurantDetailViewController: UIViewController {
 
     // MARK: Private Methods
 
-    private func setUpUI() {
+    private func setUpUI(viewController: UIViewController) {
         if let data = restaurantDetail {
             shopNameLabel.text = data.name
             addressLabel.text = data.address
@@ -56,7 +56,7 @@ final class RestaurantDetailViewController: UIViewController {
             subCatchLabel.text = data.shopCatch
             genreLabel.text = data.genre.name
             openLabel.text = data.open
-            ShowImage.showImage(imageUrl: data.photo.mobile.l, imageView: shopImage)
+            ShowImage.showImage(imageUrl: data.photo.mobile.l, imageView: shopImage, viewController: viewController)
         }
     }
 }

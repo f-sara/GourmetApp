@@ -51,11 +51,11 @@ final class HomeViewController: UIViewController, UISearchBarDelegate {
         collectionView.register(UINib(nibName: "RecommendCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "RecommendCell")
         presenter = HomePresenter(output: self, model: APIClient())
         locationManager.delegate = self
-        searchBar.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyKilometer
-        collectionView.keyboardDismissMode = .onDrag
         locationManager.requestWhenInUseAuthorization()
         configureRange()
+        searchBar.delegate = self
+        collectionView.keyboardDismissMode = .onDrag
         errorMessageLabel.isHidden = true
         openSettingButton.isHidden = true
     }
@@ -152,7 +152,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
               let restaurantData = self.restaurantData?.results.shop[indexPath.item] else {
             return RecommendCollectionViewCell()
         }
-        cell.setUpUI(restaurantData: restaurantData)
+        cell.setUpUI(restaurantData: restaurantData, viewController: self)
         indicatorView.stopAnimating()
         return cell
     }
@@ -187,7 +187,9 @@ extension HomeViewController: CLLocationManagerDelegate {
     }
 
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print("error: \(error)")
+        let title = "位置情報取得エラー"
+        let massage = "位置情報の取得に失敗しました"
+        ShowAlert.showAlert(title: title, massage: massage, viewController: self)
     }
 
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {

@@ -40,10 +40,10 @@ class RecommendCollectionViewCell: UICollectionViewCell {
 
     // MARK: Internal Methods
 
-    func setUpUI(restaurantData: Shop) {
+    func setUpUI(restaurantData: Shop, viewController: UIViewController) {
         nameLabel.text = restaurantData.name
         nearStationLabel.text = "\(restaurantData.stationName)駅"
         genreLabel.text = restaurantData.genre.name
-        ShowImage.showImage(imageUrl: restaurantData.photo.mobile.l, imageView: shopImage)
+        ShowImage.showImage(imageUrl: restaurantData.photo.mobile.l, imageView: shopImage, viewController: viewController)
     }
 }

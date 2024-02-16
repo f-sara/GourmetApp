@@ -86,7 +86,7 @@ extension SearchResultViewController: UICollectionViewDelegate, UICollectionView
               let restaurantData = self.restaurantData?.results.shop[indexPath.item] else {
             return RecommendCollectionViewCell()
         }
-        cell.setUpUI(restaurantData: restaurantData)
+        cell.setUpUI(restaurantData: restaurantData, viewController: self)
         indicatorView.stopAnimating()
         return cell
     }

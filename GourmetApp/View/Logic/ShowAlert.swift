@@ -14,6 +14,7 @@ final class ShowAlert {
 
     // MARK: Static Methods
 
+    /// 閉じるボタンのみのアラートを表示する
     static func showAlert(title: String, massage: String, viewController: UIViewController) {
         let alert = UIAlertController(title: title, message: massage, preferredStyle: .alert)
         let cancel = UIAlertAction(title: "閉じる", style: .cancel, handler: { (action) -> Void in })

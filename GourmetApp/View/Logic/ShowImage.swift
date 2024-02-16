@@ -15,14 +15,15 @@ final class ShowImage {
     // MARK: Static Methods
 
     /// String型の画像URLを変換し、UIImageViewに表示する
-    static func showImage(imageUrl: String, imageView: UIImageView) {
+    static func showImage(imageUrl: String, imageView: UIImageView, viewController: UIViewController) {
         guard let url = URL(string: imageUrl) else {
             return
         }
 
         URLSession.shared.dataTask(with: url) { data, _, error in
             if let error = error {
-                print(error)
+                let title = "画像取得エラー"
+                ShowAlert.showAlert(title: title, massage: error.localizedDescription, viewController: viewController)
                 return
             }
 
@@ -32,7 +33,8 @@ final class ShowImage {
                     imageView.image = image
                 }
             } else {
-                print("画像表示エラー")
+                let error = DataError.imageError
+                ShowAlert.showAlert(title: error.errorTitle, massage: error.errorMessage, viewController: viewController)
             }
         }.resume()
     }

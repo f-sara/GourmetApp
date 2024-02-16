@@ -40,3 +40,24 @@ enum APIError: Error {
     }
 
 }
+
+
+// MARK: - DataError
+
+enum DataError: Error {
+    case imageError
+
+    var errorTitle: String {
+        switch self {
+        case .imageError:
+            "画像取得エラー"
+        }
+    }
+
+    var errorMessage: String {
+        switch self {
+        case .imageError:
+            "画像の取得に失敗しました"
+        }
+    }
+}
