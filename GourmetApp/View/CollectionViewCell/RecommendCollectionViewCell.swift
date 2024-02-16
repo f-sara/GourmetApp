@@ -30,30 +30,6 @@ class RecommendCollectionViewCell: UICollectionViewCell {
         nameLabel.text = restaurantData.name
         nearStationLabel.text = "\(restaurantData.stationName)駅"
         genreLabel.text = restaurantData.genre.name
-        showImage(imageUrl: restaurantData.photo.mobile.l)
+        ShowImage.showImage(imageUrl: restaurantData.photo.mobile.l, imageView: shopImage)
     }
-
-
-    private func showImage(imageUrl: String) {
-        guard let url = URL(string: imageUrl) else {
-            return
-        }
-
-        URLSession.shared.dataTask(with: url) { [weak self] data, _, error in
-            if let error = error {
-                print(error)
-                return
-            }
-
-            if let data = data,
-               let image = UIImage(data: data){
-                DispatchQueue.main.async {
-                    self?.shopImage.image = image
-                }
-            } else {
-                print("画像表示エラー")
-            }
-        }.resume()
-    }
-
 }
