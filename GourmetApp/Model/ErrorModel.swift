@@ -5,6 +5,8 @@
 //  Created by 藤井紗良 on 2024/02/08.
 //
 
+// MARK: - APIError
+
 enum APIError: Error {
     case failCreateURL
     case sessionError
@@ -37,8 +39,4 @@ enum APIError: Error {
         }
     }
 
-}
-
-enum DataError: Error {
-    case imageError
 }

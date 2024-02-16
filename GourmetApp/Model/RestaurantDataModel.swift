@@ -5,6 +5,8 @@
 //  Created by 藤井紗良 on 2024/02/05.
 //
 
+// MARK: - RestaurantDataModel
+
 struct RestaurantDataModel: Decodable {
     let results: Results
 }
@@ -40,7 +42,7 @@ struct Shop: Decodable {
 struct Genre: Decodable {
     let name: String
     let genreCatch: String
-    
+
     enum CodingKeys: String, CodingKey {
         case name
         case genreCatch = "catch"
@@ -58,6 +60,9 @@ struct Mobile: Decodable {
 struct Urls: Decodable {
     let pc: String
 }
+
+
+// MARK: - MenuRangeType
 
 enum MenuRangeType: CaseIterable {
     case range1
