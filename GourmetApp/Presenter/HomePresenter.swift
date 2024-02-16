@@ -10,11 +10,12 @@
 protocol HomePresenterInput: AnyObject {
     func appearedView(range: String)
     func confirmSearchBar(keyword: String, range: String)
+    func selectedRange(range: String)
 }
 
 protocol HomePresenterOutput: AnyObject {
     func updateUI(_ restaurantModel: RestaurantDataModel?)
-    func showError(error: APIError)
+    func showError(_ error: APIError)
 }
 
 
@@ -46,7 +47,7 @@ final class HomePresenter {
             case .success(let restaurantData):
                 self.output?.updateUI(restaurantData)
             case .failure(let error):
-                self.output?.showError(error: error)
+                self.output?.showError(error)
             }
         }
     }
@@ -65,6 +66,10 @@ extension HomePresenter: HomePresenterInput {
 
     func confirmSearchBar(keyword: String, range: String) {
         fetchRestaurantData(keyword: keyword, range: range)
+    }
+    
+    func selectedRange(range: String) {
+        fetchRestaurantData(keyword: nil, range: range)
     }
 
 }
