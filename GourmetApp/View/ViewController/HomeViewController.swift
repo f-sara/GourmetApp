@@ -24,9 +24,8 @@ final class HomeViewController: UIViewController, UISearchBarDelegate {
     private let locationManager = CLLocationManager()
     private var presenter: HomePresenter!
     private var restaurantData: RestaurantDataModel?
-    private var restaurantImage: [UIImage] = []
-    private var range: String = "1"
     private var permissionLocation: Bool = false
+    private var range: String = "1"
     private var selectedRange = MenuRangeType.range1
 
 
@@ -76,7 +75,7 @@ final class HomeViewController: UIViewController, UISearchBarDelegate {
         selectedRangeButton.setTitle(selectedRange.range, for: .normal)
         range = selectedRange.rangeValue
         if permissionLocation == true {
-            self.presenter.appearedView(range: range)
+            self.presenter.selectedRange(range: range)
         }
     }
 
@@ -214,7 +213,6 @@ extension HomeViewController: CLLocationManagerDelegate {
 extension HomeViewController: HomePresenterOutput {
     func updateUI(_ restaurantModel: RestaurantDataModel?) {
         self.restaurantData = restaurantModel
-        self.restaurantImage = []
         Task {
             self.collectionView.reloadData()
         }

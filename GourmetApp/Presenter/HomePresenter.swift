@@ -10,6 +10,7 @@
 protocol HomePresenterInput: AnyObject {
     func appearedView(range: String)
     func confirmSearchBar(keyword: String, range: String)
+    func selectedRange(range: String)
 }
 
 protocol HomePresenterOutput: AnyObject {
@@ -65,6 +66,10 @@ extension HomePresenter: HomePresenterInput {
 
     func confirmSearchBar(keyword: String, range: String) {
         fetchRestaurantData(keyword: keyword, range: range)
+    }
+    
+    func selectedRange(range: String) {
+        fetchRestaurantData(keyword: nil, range: range)
     }
 
 }

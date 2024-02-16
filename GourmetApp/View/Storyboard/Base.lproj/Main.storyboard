@@ -61,17 +61,39 @@
                         <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="yex-bG-3RT">
-                                <rect key="frame" x="15" y="103" width="400" height="746"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="ATD-Xr-ox7">
+                                <rect key="frame" x="271.66666666666669" y="113" width="143.33333333333331" height="31"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="検索範囲" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="2de-bp-YN5">
+                                        <rect key="frame" x="0.0" y="0.0" width="56.333333333333336" height="31"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="textColor" name="AccentColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" changesSelectionAsPrimaryAction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NGE-mT-5fD">
+                                        <rect key="frame" x="57.333333333333314" y="0.0" width="86" height="31"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="300m"/>
+                                        <buttonConfiguration key="configuration" style="tinted" title="3,000m">
+                                            <fontDescription key="titleFontDescription" type="system" pointSize="14"/>
+                                        </buttonConfiguration>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="NGE-mT-5fD" firstAttribute="width" secondItem="ATD-Xr-ox7" secondAttribute="width" multiplier="0.6" id="D4U-gl-ftC"/>
+                                </constraints>
+                            </stackView>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="yex-bG-3RT">
+                                <rect key="frame" x="15" y="161" width="400" height="688"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="3Ya-3L-xIm">
                                     <size key="itemSize" width="128" height="128"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="2" minY="40" maxX="2" maxY="0.0"/>
+                                    <inset key="sectionInset" minX="2" minY="10" maxX="2" maxY="10"/>
                                 </collectionViewFlowLayout>
                                 <activityIndicatorView key="backgroundView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="medium" id="28w-Cb-wai">
-                                    <rect key="frame" x="0.0" y="0.0" width="400" height="746"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="400" height="688"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="tintColor" systemColor="systemOrangeColor"/>
                                     <color key="color" systemColor="systemOrangeColor"/>
@@ -94,11 +116,13 @@
                         <constraints>
                             <constraint firstItem="Hha-Hm-RF7" firstAttribute="centerX" secondItem="Hu9-vb-6sE" secondAttribute="centerX" id="1l0-VD-5lk"/>
                             <constraint firstItem="p0F-Dw-k0F" firstAttribute="bottom" secondItem="yex-bG-3RT" secondAttribute="bottom" id="A4j-oL-Wnz"/>
+                            <constraint firstItem="p0F-Dw-k0F" firstAttribute="trailing" secondItem="ATD-Xr-ox7" secondAttribute="trailing" constant="15" id="ADe-FH-d0j"/>
                             <constraint firstItem="p0F-Dw-k0F" firstAttribute="trailing" secondItem="Hha-Hm-RF7" secondAttribute="trailing" id="MGl-bf-HYi"/>
                             <constraint firstItem="yex-bG-3RT" firstAttribute="leading" secondItem="p0F-Dw-k0F" secondAttribute="leading" constant="15" id="Uxe-C0-rnc"/>
+                            <constraint firstItem="ATD-Xr-ox7" firstAttribute="top" secondItem="p0F-Dw-k0F" secondAttribute="top" constant="10" id="ahv-Ns-kEB"/>
+                            <constraint firstItem="yex-bG-3RT" firstAttribute="centerX" secondItem="Hu9-vb-6sE" secondAttribute="centerX" id="aiv-qs-gIO"/>
                             <constraint firstItem="Hha-Hm-RF7" firstAttribute="top" secondItem="p0F-Dw-k0F" secondAttribute="top" constant="55" id="cgd-zg-DEB"/>
-                            <constraint firstItem="p0F-Dw-k0F" firstAttribute="trailing" secondItem="yex-bG-3RT" secondAttribute="trailing" constant="15" id="gti-Jc-UO1"/>
-                            <constraint firstItem="yex-bG-3RT" firstAttribute="top" secondItem="p0F-Dw-k0F" secondAttribute="top" id="xg3-3o-EJU"/>
+                            <constraint firstItem="yex-bG-3RT" firstAttribute="top" secondItem="ATD-Xr-ox7" secondAttribute="bottom" constant="17" id="d8Y-Ma-rBq"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="3sV-VH-8Xb"/>
@@ -106,6 +130,7 @@
                         <outlet property="collectionView" destination="yex-bG-3RT" id="Des-oW-NBF"/>
                         <outlet property="errorMessageLabel" destination="Hha-Hm-RF7" id="HVV-NX-7vN"/>
                         <outlet property="indicatorView" destination="28w-Cb-wai" id="tdH-bt-Uti"/>
+                        <outlet property="selectedRangeButton" destination="NGE-mT-5fD" id="hIF-zF-4FF"/>
                         <segue destination="T9v-QZ-Vul" kind="presentation" identifier="showGenreDetail" id="AEq-TJ-bvU"/>
                     </connections>
                 </viewController>
@@ -154,7 +179,7 @@
                                 </constraints>
                             </stackView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" minimumZoomScale="0.0" maximumZoomScale="0.0" bouncesZoom="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="pyH-KV-9bS">
-                                <rect key="frame" x="15" y="179.33333333333331" width="400" height="669.66666666666674"/>
+                                <rect key="frame" x="15" y="176.33333333333331" width="400" height="672.66666666666674"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <inset key="scrollIndicatorInsets" minX="8" minY="8" maxX="8" maxY="8"/>
                                 <viewLayoutGuide key="contentLayoutGuide" id="Dby-DN-NEx"/>
@@ -166,7 +191,7 @@
                                     <inset key="sectionInset" minX="2" minY="10" maxX="2" maxY="10"/>
                                 </collectionViewFlowLayout>
                                 <activityIndicatorView key="backgroundView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="medium" id="6cn-y5-a0g">
-                                    <rect key="frame" x="0.0" y="0.0" width="400" height="669.66666666666674"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="400" height="672.66666666666674"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="color" systemColor="systemOrangeColor"/>
                                 </activityIndicatorView>
@@ -207,7 +232,7 @@
                             <constraint firstItem="oEm-sk-bI3" firstAttribute="trailing" secondItem="fcQ-5O-sbb" secondAttribute="trailing" constant="15" id="JMz-CT-8Ok"/>
                             <constraint firstItem="uI0-OR-7LP" firstAttribute="top" secondItem="nmA-1A-6JH" secondAttribute="bottom" constant="10" id="KtZ-LQ-EhO"/>
                             <constraint firstItem="pyH-KV-9bS" firstAttribute="centerX" secondItem="zhX-8I-zHz" secondAttribute="centerX" id="WoM-3C-8aT"/>
-                            <constraint firstItem="pyH-KV-9bS" firstAttribute="top" secondItem="uI0-OR-7LP" secondAttribute="bottom" constant="20" id="aNE-ST-fFm"/>
+                            <constraint firstItem="pyH-KV-9bS" firstAttribute="top" secondItem="uI0-OR-7LP" secondAttribute="bottom" constant="17" id="aNE-ST-fFm"/>
                             <constraint firstItem="fcQ-5O-sbb" firstAttribute="top" secondItem="xfW-pa-sCC" secondAttribute="bottom" constant="80" id="j4v-kH-zxY"/>
                             <constraint firstItem="oEm-sk-bI3" firstAttribute="bottom" secondItem="pyH-KV-9bS" secondAttribute="bottom" id="k7V-3i-dQP"/>
                             <constraint firstItem="nmA-1A-6JH" firstAttribute="centerX" secondItem="zhX-8I-zHz" secondAttribute="centerX" id="oRB-6O-6f6"/>

@@ -8,7 +8,8 @@
 // MARK: - Protocols
 
 protocol SearchResultPresenterInput: AnyObject {
-    func viewAppear(genre: String)
+    func viewAppear(genre: String, range: String)
+    func selectedRange(genre: String, range: String)
 }
 
 protocol SearchResultPresenterOutput: AnyObject {
@@ -38,8 +39,8 @@ final class SearchResultPresenter {
 
     // MARK: Private Methods
 
-    private func fetchRestaurantData(genre: String) {
-        apiClient.fetchRestaurantData(keyword: nil, range: "3", genre: genre) { [weak self]  result in
+    private func fetchRestaurantData(genre: String?, range: String) {
+        apiClient.fetchRestaurantData(keyword: nil, range: range, genre: genre) { [weak self]  result in
             guard let self = self else { return }
             switch result {
             case .success(let restaurantData):
@@ -58,8 +59,12 @@ final class SearchResultPresenter {
 // MARK: SearchResultPresenterInput
 
 extension SearchResultPresenter: SearchResultPresenterInput {
-
-    func viewAppear(genre: String) {
-        fetchRestaurantData(genre: genre)
+    func viewAppear(genre: String, range: String) {
+        fetchRestaurantData(genre: genre, range: range)
     }
+
+    func selectedRange(genre: String, range: String) {
+        fetchRestaurantData(genre: genre, range: range)
+    }
+
 }
