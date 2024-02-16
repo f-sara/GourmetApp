@@ -156,8 +156,8 @@
 			isa = PBXGroup;
 			children = (
 				8B8F02812B7074EC0066A4C5 /* RecommendCollectionViewCell.swift */,
-				8B8F02822B7074EC0066A4C5 /* RecommendCollectionViewCell.xib */,
 				8BCCA7032B7C35CF008EB872 /* GenreCollectionViewCell.swift */,
+				8B8F02822B7074EC0066A4C5 /* RecommendCollectionViewCell.xib */,
 				8BCCA7042B7C35CF008EB872 /* GenreCollectionViewCell.xib */,
 			);
 			path = CollectionViewCell;

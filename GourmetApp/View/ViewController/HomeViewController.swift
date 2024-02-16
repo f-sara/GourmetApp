@@ -168,7 +168,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
               let restaurantData = self.restaurantData?.results.shop[indexPath.item] else {
             return RecommendCollectionViewCell()
         }
-        cell.setUp(restaurantData: restaurantData)
+        cell.setUpUI(restaurantData: restaurantData)
         indicatorView.stopAnimating()
         return cell
     }
