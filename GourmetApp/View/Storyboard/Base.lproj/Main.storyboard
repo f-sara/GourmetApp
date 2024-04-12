@@ -105,7 +105,7 @@
                                 </connections>
                             </collectionView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ErrorMessage" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hha-Hm-RF7">
-                                <rect key="frame" x="0.0" y="158" width="430" height="20.333333333333343"/>
+                                <rect key="frame" x="0.0" y="203" width="430" height="20.333333333333343"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -121,7 +121,7 @@
                             <constraint firstItem="yex-bG-3RT" firstAttribute="leading" secondItem="p0F-Dw-k0F" secondAttribute="leading" constant="15" id="Uxe-C0-rnc"/>
                             <constraint firstItem="ATD-Xr-ox7" firstAttribute="top" secondItem="p0F-Dw-k0F" secondAttribute="top" constant="10" id="ahv-Ns-kEB"/>
                             <constraint firstItem="yex-bG-3RT" firstAttribute="centerX" secondItem="Hu9-vb-6sE" secondAttribute="centerX" id="aiv-qs-gIO"/>
-                            <constraint firstItem="Hha-Hm-RF7" firstAttribute="top" secondItem="p0F-Dw-k0F" secondAttribute="top" constant="55" id="cgd-zg-DEB"/>
+                            <constraint firstItem="Hha-Hm-RF7" firstAttribute="top" secondItem="p0F-Dw-k0F" secondAttribute="top" constant="100" id="cgd-zg-DEB"/>
                             <constraint firstItem="yex-bG-3RT" firstAttribute="top" secondItem="ATD-Xr-ox7" secondAttribute="bottom" constant="17" id="d8Y-Ma-rBq"/>
                         </constraints>
                     </view>
@@ -308,7 +308,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="768-yA-zDY"/>
+        <segue reference="AEq-TJ-bvU"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="house" catalog="system" width="128" height="104"/>

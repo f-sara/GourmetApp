@@ -22,7 +22,7 @@ enum APIError: Error {
         case .requestError(_):
             "リクエストエラー"
         case .decodeError(_):
-            "デコードエラー"
+            "データ取得エラー"
         }
     }
 
